@@ -1,0 +1,141 @@
+.page-create {
+    border:1px solid black;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.title-page {
+    margin-top: 40px;
+    text-align: center;
+    color:rgb(70, 99, 20);
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+    width:100%;
+    height:90%;
+    padding-bottom: 7%;
+}
+
+.aside-left {
+    padding-left: 5%;
+    padding-right: 5%;
+    width:50%;
+    min-height:500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-adress {
+    margin-top: 75px;
+    font-family: "Roboto";
+    font-size:1.5rem;
+    font-weight: bold;
+}
+
+.aside-right {
+    padding-left: 5%;
+    padding-right: 5%;
+    width:50%;
+    min-height:800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formData {
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label-create {
+    padding-left: 10%;
+    width:100%;
+    font-family: 'Roboto';
+    color:#565869;
+    font-size: 1.4rem;
+}
+
+.text-control, .form-select{
+    padding-left: 10px;
+    padding-right: 10px;
+    width:80%;
+    height: 50px;
+    color:#565869;
+    font-size: 1.4rem;
+    border:1px solid #5658697c;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 25px #5658697c;
+}
+
+.text-control:focus {
+    color: rgb(70, 99, 20);
+}
+
+.btn-submit {
+    background-color: rgb(70, 99, 20);
+    box-shadow: 0px 0px 25px rgba(70, 99, 20, 0.372);
+    color:white;
+    width:120px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 25px;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 1.3rem;
+    border:none;
+}
+
+.btn-submit:hover {
+    background-color: #565869 ;
+}
+
+
+@media screen and (max-width:768px) {
+    form {
+        flex-direction: column;
+        width: 100%;
+    }
+    .title-page {
+        margin-top:40px;
+        font-size: 1.3rem;
+    }
+    .aside-left{
+        width:100%;
+        margin-top:40px;
+    }
+    .title-adress {
+        margin-top:40px;
+        width:100%;
+    } 
+    .aside-right {
+        width:100%;
+    }
+    .formData {
+        width:100%;
+        justify-content: center;
+        align-items: left;
+    }
+    .text-control, .form-select {
+        width:100%;
+        margin-left:10px;
+    }
+    .label-create {
+        padding-left: 2%;
+    }
+}

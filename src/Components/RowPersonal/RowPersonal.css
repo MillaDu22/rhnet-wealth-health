@@ -1,0 +1,26 @@
+.row-dash {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    border-bottom: 1px solid #565869 ;
+    height:40px;
+}
+.cell-row {
+    height:40px;
+    border-right:1px solid #40414e21;
+    border-left:1px solid #40414e21;
+    width:11.111%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 14px;
+    color: rgb(70, 99, 20);
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}

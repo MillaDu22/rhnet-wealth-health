@@ -1,0 +1,20 @@
+.filter-input {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:11.111%;
+}
+.label-filter-input {
+    font-family: "Roboto";
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+.tri-dash {
+    width:20px;
+    border:none;
+}
