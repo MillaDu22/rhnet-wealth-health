@@ -4,8 +4,9 @@ import Select from "../../Select/index.jsx";
 import { states } from "../../../Datas/DataStates.js";
 import { departments } from "../../../Datas/DataDepartment.js";
 import DateSelector from "../../DateSelector/index.jsx";
+import Modal from "../../Modal/index.jsx";
 
-function CreateModal () {
+function FormNewPage () {
     return(
         <div className="page-create">
             <h2 className = "title-page">RHNet - Create new employees</h2>
@@ -43,10 +44,11 @@ function CreateModal () {
                         <div id="error-zip"></div>
                     </div>
                     <Select uniqueId="show-departments" options={departments.map((department, index) => ({ label: department.name, value: index }))} label="Department" />
-                    <input className="btn-submit" type="submit" value="Save"/>
+                    <button type="submit" className="btn btn-primary btn-submit" data-bs-toggle="modal" data-bs-target="#Modal">Save</button>
                 </div>
             </form>
+            <Modal />
         </div>
     )
 }
-export default CreateModal;
+export default FormNewPage;

@@ -122,7 +122,7 @@ const employees = [
     {
         "id": 11,
         "First Name": "Tonio",
-        "Last Name": "FERREIRA",
+        "Last Name": "Ferreira",
         "Start Date": "31/01/2022",
         "Department": "Marheting" ,
         "Date of Birth": "12/08/2002",
