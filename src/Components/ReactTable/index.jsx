@@ -2,10 +2,10 @@ import React from 'react';
 import { useTable } from 'react-table';
 import employees from '../../Datas/DataEmployees.js';
 import FilterInput from '../FilterInput/index.jsx';
-import "./DashHome.css";
+import "./ReactTable.css";
 
-function DashHome() {
-    const data = React.useMemo(() => employees, [employees]);
+function ReactTable() {
+    const data = React.useMemo(() => employees, []);
 
     const columns = React.useMemo(
         () => [
@@ -69,14 +69,13 @@ function DashHome() {
 
     const {
         getTableProps,
-        getTableBodyProps,
         headerGroups,
         rows,
         prepareRow,
     } = useTable({ columns, data });
 
     return (
-        <div className="container-dash">
+        <div className="container-table">
             <div className="row-input-tri">
             </div>
             {/* Tableau d'affichage personnel */}
@@ -112,4 +111,4 @@ function DashHome() {
     );
 }
 
-export default DashHome;
+export default ReactTable;

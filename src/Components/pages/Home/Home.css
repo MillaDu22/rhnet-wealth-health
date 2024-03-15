@@ -8,6 +8,7 @@
     max-width: 1440px;
     min-width: 320px;
 }
+
 html {
     display: flex;
     flex-direction: column;
@@ -18,6 +19,7 @@ html {
     max-width: 1440px;
     min-width: 320px;
 }
+
 .main-employees-list {
     position: relative;
     box-sizing: border-box;
@@ -34,6 +36,7 @@ html {
     height:100%;
     border: 1px solid black;
 }
+
 .title-main-page {
     text-align: center;
     color:rgb(70, 99, 20);
@@ -41,16 +44,18 @@ html {
     font-weight: 700;
     font-size: 2rem;
 }
+
 .row-entries {
     position: relative;
     margin-top:20px;
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 0%;
+    padding-right:0%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 74%;
 }
+
 .formData-home {
     display: flex;
     flex-direction: row;
@@ -59,31 +64,40 @@ html {
     width:20%;
 }
 
+.form-select:hover, .form-control-search:hover, .fa-search:hover{
+    cursor: pointer;
+}
+
 .label-select-show {
     width:60%;
     font-family: 'Roboto';
     color:#565869;
     font-size: 16px;
 }
+
 #label-search-bar {
     width:35%;
     font-family: 'Roboto';
     color:#565869;
     font-size: 16px;
 }
+
 .form-select.show {
     width: 40%;
 }
+
 .form-control-search {
+    padding-left:10px;
     width:95%;
     height:50px;
     border:1px solid #565869;
     border-radius:10px;
     box-shadow: inset 0px 0px 25px #5658697c;
 }
+
 .fa-search {
     position:absolute;
-    right:8%;
+    right:1.5%;
 }
 
 @media screen and (max-width:768px) {

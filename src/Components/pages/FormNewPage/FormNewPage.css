@@ -71,7 +71,7 @@ form{
     font-size: 1.4rem;
 }
 
-.text-control, .form-select{
+.text-control{
     padding-left: 10px;
     padding-right: 10px;
     width:80%;
@@ -79,12 +79,41 @@ form{
     color:#565869;
     font-size: 1.4rem;
     border:1px solid #5658697c;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: inset 0px 0px 25px #5658697c;
 }
 
-.text-control:focus {
-    color: rgb(70, 99, 20);
+.text-control:hover{
+    cursor: pointer;
+}
+
+.calendar-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    width:80%;
+    height: 50px;
+    color:#565869;
+    font-size: 1.4rem;
+    border:1px solid #5658697c;
+    border-radius: 4px;
+    box-shadow: inset 0px 0px 25px #5658697c;
+}
+.calendar-date-input {
+    width:90%;
+    border-style: none;
+    background: transparent;
+    height:100%;
+}
+.calendar-date-input:hover {
+    cursor: pointer;
+}
+
+.calendar-icon:hover {
+    cursor: pointer;
 }
 
 .btn-submit {
@@ -126,12 +155,12 @@ form{
     .aside-right {
         width:100%;
     }
-    .formData {
+    .formData, .calendar-input-container {
         width:100%;
         justify-content: center;
         align-items: left;
     }
-    .text-control, .form-select {
+    .text-control, .form-select, .calendar-date-input {
         width:100%;
         margin-left:10px;
     }

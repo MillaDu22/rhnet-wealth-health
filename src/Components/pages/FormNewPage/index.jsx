@@ -1,10 +1,10 @@
 import React from 'react';
 import "./FormNewPage.css";
-import Select from "../../Select/index.jsx";
 import { states } from "../../../Datas/DataStates.js";
 import { departments } from "../../../Datas/DataDepartment.js";
-import DateSelector from "../../DateSelector/index.jsx";
 import Modal from "../../Modal/index.jsx";
+import ReactSelect from "../../ReactSelect/index.jsx";
+import ReactCalendar from "../../ReactCalendar/index.jsx"
 
 function FormNewPage () {
     return(
@@ -22,8 +22,8 @@ function FormNewPage () {
                         <input className="text-control" type="text" id="last" name="last" minLength="2" required/>
                         <div id="error-last"></div>
                     </div>
-                    <DateSelector uniqueId="dateOfBirth" label="Date of Birth" />
-                    <DateSelector uniqueId="startData" label="Start Date" />
+                    <ReactCalendar uniqueId="dateOfBirth" label="Date of Birth" />
+                    <ReactCalendar uniqueId="startData" label="Start Date" />
                 </div>
                 <div className="aside-right">
                     <h3 className= "title-adress">Adress</h3>
@@ -37,13 +37,13 @@ function FormNewPage () {
                         <input className="text-control" type="text" id="city" name="city"/>
                         <div id="error-city"></div>
                     </div>
-                    <Select uniqueId="show-states" options={states.map((state, index) => ({ label: state.name, value: index }))} label="State" />
+                    <ReactSelect inputId="show-states" options={states.map((state, index) => ({ label: state.name, value: index, isDefault: state.name === 'Alabama' }))} label="State"/>
                     <div className="formData">
                         <label className="label-create" htmlFor="zip">Zip Code</label>
                         <input className="text-control" type="number" id="zip" name="zip" min="1" max="100" />
                         <div id="error-zip"></div>
                     </div>
-                    <Select uniqueId="show-departments" options={departments.map((department, index) => ({ label: department.name, value: index }))} label="Department" />
+                    <ReactSelect inputId="show-departments" options={departments.map((department, index) => ({ label: department.name, value: index, isDefault: department.name === 'Sales'  }))} label="Department" />
                     <button type="submit" className="btn btn-primary btn-submit" data-bs-toggle="modal" data-bs-target="#Modal">Save</button>
                 </div>
             </form>
