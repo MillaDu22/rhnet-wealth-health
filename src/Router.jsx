@@ -1,7 +1,7 @@
 import React from 'react';
-import Home from  "./Components/pages/Home/index";
-import FormNewPage from "./Components/pages/FormNewPage/index.jsx";
-import Error from "./Components/pages/Error/index.jsx";
+import Home from  "../src/pages/Home/index.jsx";
+import FormNewPage from "../src/pages/FormNewPage/index.jsx";
+import Error from "../src/pages/Error/index.jsx";
 import { Routes, Route } from "react-router-dom";
 
 

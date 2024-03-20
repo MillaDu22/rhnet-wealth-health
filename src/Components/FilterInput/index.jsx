@@ -1,13 +1,16 @@
 import React from 'react';
 import "./Filterinput.css";
+import { BsArrowUp, BsArrowDown } from 'react-icons/bs'; 
 
-const FilterInput = ({ label, id }) => {
+const FilterInput = ({ label, id, onChange }) => {
     return (
         <div className="filter-input">
-            <label htmlFor={id} className="label-filter-input">{label}</label>
-            <input className="tri-dash" type="number" id={id} min="1" max="100" />
+            <span className="label-filter-input">{label}</span>
+            <BsArrowUp className="arrow-icon" onClick={() => onChange(id, 'asc')} />
+            <BsArrowDown className="arrow-icon" onClick={() => onChange(id, 'desc')} />
         </div>
     );
 };
 
 export default FilterInput;
+

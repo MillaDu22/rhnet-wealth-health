@@ -2,22 +2,26 @@ import React from 'react';
 import Select from 'react-select';
 import "./ReactSelect.css";
 
-function CustomSelect ({ options, label, inputId }) {
+function ReactSelect ({ options, label, uniqueId }) {
     const defaultValue = options.find(option => option.isDefault);
+    const handleChange = (selectedOption) => {
+        // Faire quelque chose avec la valeur sélectionée //
+    };
+    
     return (
-        <div className="react-select-container"> 
-            <label className="react-select__label-select-list" htmlFor={inputId}>{label}</label>
-            <Select 
-                classNamePrefix="react-select" 
-                className="react-select__value-container" 
+        <div className="dropdown">
+            <label className="label-dropdown" htmlFor={uniqueId}>{label}</label>
+            <Select
+                id={uniqueId}
+                classNamePrefix="react-select"
                 aria-label="Default select example" 
-                inputId={inputId} 
-                name="show"
+                defaultValue={defaultValue}
                 options={options}
-                defaultValue={defaultValue} // Définit l'option par défaut //
+                onChange={handleChange}
+                name="show"
             />
         </div>
-    )
+    );
 }
 
-export default CustomSelect;
+export default ReactSelect;

@@ -1,0 +1,28 @@
+.time-picker {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 295px;
+}
+
+.hour-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.minute-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-picker button {
+    padding: 5px;
+    margin: 2px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.time-picker button.selected {
+    background-color: #ccc;
+}

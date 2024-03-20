@@ -1,0 +1,12 @@
+.calendar-container {
+    display: flex;
+    flex-direction: row; 
+}
+
+.calendar-control {
+    flex-grow: 1; 
+}
+
+.calendar-time-picker {
+    flex-grow: 0; 
+}

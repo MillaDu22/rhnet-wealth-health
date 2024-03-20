@@ -2,10 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { IoCalendarOutline } from 'react-icons/io5';
+import './ReactCalendar.css';
+import TimePicker from '../TimePicker/index.jsx';
 
-function ReactCalendar ({ uniqueId, label }) {
-    const [isOpen, setIsOpen] = useState(false);
+function ReactCalendar({ uniqueId, label }) {
     const [date, setDate] = useState(new Date());
+    const [time, setTime] = useState('12:00');
+    const [isOpen, setIsOpen] = useState(false);
     const calendarRef = useRef();
 
     const handleClickOutside = (event) => {
@@ -18,12 +21,15 @@ function ReactCalendar ({ uniqueId, label }) {
         setIsOpen(!isOpen);
     };
 
-    const handleChange = (newDate) => {
+    const handleChangeDate = (newDate) => {
         setDate(newDate);
-        setIsOpen(false); // Ferme le calendrier lorsque la date est sélectionnée //
+        setIsOpen(false);
     };
 
-    // Ajoute un écouteur d'événements pour détecter les clics en dehors du calendrier //
+    const handleChangeTime = (newTime) => {
+        setTime(newTime);
+    };
+
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
@@ -40,17 +46,21 @@ function ReactCalendar ({ uniqueId, label }) {
                     value={date.toISOString().split('T')[0]}
                     readOnly
                     className="calendar-date-input"
-                    onClick={toggleCalendar} // Ouvre le calendrier lorsqu'on clique sur le champ //
-                    id = {uniqueId}
+                    onClick={toggleCalendar}
+                    id={uniqueId}
                 />
                 <IoCalendarOutline className="calendar-icon" onClick={toggleCalendar} aria-label="Ouvrir le calendrier" />
             </div>
             {isOpen && (
                 <div className="calendar-container">
                     <Calendar
-                        onChange={handleChange}
+                        onChange={handleChangeDate}
                         value={date}
                         className="calendar-control"
+                    />
+                    <TimePicker
+                        onChange={handleChangeTime}
+                        value={time}
                     />
                 </div>
             )}
@@ -60,3 +70,5 @@ function ReactCalendar ({ uniqueId, label }) {
 }
 
 export default ReactCalendar;
+
+

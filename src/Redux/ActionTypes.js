@@ -1,0 +1,4 @@
+export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
+export const SEARCH_EMPLOYEE = 'SEARCH_EMPLOYEE';
+export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
+export const SORT_EMPLOYEES = 'SORT_EMPLOYEES';

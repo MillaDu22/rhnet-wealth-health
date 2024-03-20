@@ -128,6 +128,10 @@ html {
         margin-bottom: 10px; 
     }
 
+    .fa-search {
+        right:7%;
+    }
+
     .form-select.show {
         width: 100%; 
         margin-bottom: 10px; 

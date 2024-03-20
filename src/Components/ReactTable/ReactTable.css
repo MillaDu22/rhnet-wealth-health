@@ -16,10 +16,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 40px auto;
     width: 100%;
     height:100%;
-    overflow-x: auto;
+    overflow-x: scroll;
+}
+
+thead {
+    background:rgb(86, 88, 105) ;
+}
+thead tr th {
+    color:white ;
 }
 
 .table {
@@ -28,12 +35,11 @@
     margin-left: auto;
     margin-right: auto;
     height:100%;
-    width:auto;
-    border-collapse: collapse;
+    width:100%;
 
 }
 
-.tr {
+tbody tr {
     display: table-row;
     color: rgb(70, 99, 20);
     height:40px;
@@ -50,25 +56,27 @@
     text-align: center;
 }
 
-.th, .td {
+th, td {
     display: table-cell;
-    border: 1px solid #ddd;
+    padding:0;
+    text-align: none;
 }
 
-.th {
+th {
     background-color: #f2f2f2;
     font-weight: bold;
     color:black;
 }
 
-.tr:first-child .th {
+tr:first-child th {
     font-weight: bold;
 }
 
-.td {
-    text-align: left;
+td {
+    text-align: center;
 }
 
-.tbody {
-    width:100%;
-}
+
+
+
+
