@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rhnet-wealth-health/static/css/main.72a505be.css",
-    "main.js": "/rhnet-wealth-health/static/js/main.f0b65c1e.js",
+    "main.css": "/rhnet-wealth-health/static/css/main.6e90a4b5.css",
+    "main.js": "/rhnet-wealth-health/static/js/main.74a02b97.js",
     "static/js/453.e235fbb5.chunk.js": "/rhnet-wealth-health/static/js/453.e235fbb5.chunk.js",
     "static/media/logo-wealth-health.png": "/rhnet-wealth-health/static/media/logo-wealth-health.3dbe2d1fe44e8ff53152.png",
     "index.html": "/rhnet-wealth-health/index.html",
-    "main.72a505be.css.map": "/rhnet-wealth-health/static/css/main.72a505be.css.map",
-    "main.f0b65c1e.js.map": "/rhnet-wealth-health/static/js/main.f0b65c1e.js.map",
+    "main.6e90a4b5.css.map": "/rhnet-wealth-health/static/css/main.6e90a4b5.css.map",
+    "main.74a02b97.js.map": "/rhnet-wealth-health/static/js/main.74a02b97.js.map",
     "453.e235fbb5.chunk.js.map": "/rhnet-wealth-health/static/js/453.e235fbb5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.72a505be.css",
-    "static/js/main.f0b65c1e.js"
+    "static/css/main.6e90a4b5.css",
+    "static/js/main.74a02b97.js"
   ]
 }
