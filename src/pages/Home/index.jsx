@@ -26,6 +26,17 @@ function Home() {
             <div id="react-table">
                 <ReactTable employees={employees} /> 
             </div>
+            <div className="row-bottom">
+                <span className="account-employees">Showing
+                    <p className="show-number">10</p>to
+                    <p className="show-number-to">10</p>of 
+                    <p className="show-number-of">12</p>entries
+                </span>
+                <div className = "container-button">
+                    <button className="prev" type="button" name="prev">Prev</button>
+                    <button className="next" type="button" name="prev">Next</button>
+                </div>
+            </div>
         </main>
     );
 }

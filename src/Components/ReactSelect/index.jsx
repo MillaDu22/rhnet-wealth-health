@@ -1,11 +1,11 @@
 import React from 'react';
 import Select from 'react-select';
-import "./ReactSelect.css";
+import './ReactSelect.css';
 
 function ReactSelect ({ options, label, uniqueId }) {
     const defaultValue = options.find(option => option.isDefault);
     const handleChange = (selectedOption) => {
-        // Faire quelque chose avec la valeur sélectionée //
+        // Faire action avec la valeur sélectionée //
     };
     
     return (

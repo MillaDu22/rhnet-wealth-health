@@ -50,7 +50,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .react-select-container {
+    .react-select-container, .dropdown {
         width: 100%;
         justify-content: center;
         align-items: left;

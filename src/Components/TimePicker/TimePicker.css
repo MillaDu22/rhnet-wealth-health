@@ -2,27 +2,75 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 295px;
+    height: 324px;
+    width:20%;
+    margin-left: 10px;
+}
+
+.container-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    height:290px;
+    overflow-y: scroll;
+    border-top:1px solid #6c757d95;
+    border-bottom:1px solid #6c757d95;
+    border-right:1px solid #6c757d95; 
+    border-left:1px solid #6c757d95; 
+}
+
+.scroll-button {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    width:98%;
+    background: white;
+    cursor: pointer;
+    color:black;
+    border:none;
+}
+
+.scroll-button:hover {
+    color: #cccccc92;
 }
 
 .hour-column {
+    background: white;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 94%;
 }
 
-.minute-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.time-picker button {
+.time-picker .time-button {
     padding: 5px;
-    margin: 2px;
+    width:98%;
     border: none;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0af;
     cursor: pointer;
+    border-bottom:1px solid #6c757d95;
+    font-family:'Roboto';
+}
+
+.time-picker .time-button:hover {
+    background-color: #f0f0f0;
 }
 
 .time-picker button.selected {
-    background-color: #ccc;
+    background:#006edc;
+    color:white;
 }
+
+@media screen and (max-width: 768px) {
+    .time-picker {
+        margin:0;
+    }
+}
+
+

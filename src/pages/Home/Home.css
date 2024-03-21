@@ -100,6 +100,61 @@ html {
     right:1.5%;
 }
 
+#react-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.row-bottom {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:10%;
+    padding-right:10%;
+}
+
+.account-employees {
+    display:flex;
+    flex-direction: row;
+    font-family: 'Roboto';
+    color:#565869;
+    font-size:18px;
+    font-weight: 500;
+}
+
+.show-number, .show-number-to, .show-number-of{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.container-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width:200px;
+}
+
+.prev, .next {
+    border:none;
+    background: #565869;
+    box-shadow: 0px 0px 8px #565869 ;
+    color: white;
+    width: 90px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 25px;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+}
 @media screen and (max-width:768px) {
     .main-employees-list {
         padding-top: 0px;
@@ -141,4 +196,52 @@ html {
         width: 100%;
         min-width:250px; 
     }
+
+    #react-table {
+        overflow-x: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .row-bottom {
+        flex-direction: column-reverse;
+        padding: 0;
+        height:90px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .account-employees {
+        margin-top: 20px;
+    }
+    
+    .show-number, .show-number-to, .show-number-of{
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .container-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width:200px;
+    }
+    
+    .prev, .next {
+        border:none;
+        background: #565869;
+        box-shadow: 0px 0px 8px #565869 ;
+        color: white;
+        width: 90px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 25px;
+        font-family: "Roboto";
+        font-weight: 500;
+        font-size: 16px;
+        border: none;
+    }
+
+
+
 }

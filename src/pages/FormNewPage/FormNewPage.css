@@ -79,7 +79,7 @@ form{
     color:#565869;
     font-size: 1.4rem;
     border:1px solid #5658697c;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: inset 0px 0px 25px #5658697c;
 }
 
@@ -117,8 +117,8 @@ form{
 }
 
 .btn-submit {
-    background-color: rgb(70, 99, 20);
-    box-shadow: 0px 0px 25px rgba(70, 99, 20, 0.372);
+    background-color: #565869;
+    box-shadow: 0px 0px 8px #565869;
     color:white;
     width:120px;
     padding-top: 7px;
@@ -161,7 +161,7 @@ form{
     .aside-right {
         width:100%;
     }
-    .formData, .calendar-input-container {
+    .formData, .calendar-input-container,.dropdown {
         width:100%;
         justify-content: center;
         align-items: left;
