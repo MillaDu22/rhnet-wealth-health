@@ -1,49 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useTable, useFilters, useSortBy } from 'react-table';
-import employees from '../../Datas/DataMockEmployees.js';
 import FilterInput from '../FilterInput/index.jsx';
 import './ReactTable.css';
 
 function ReactTable() {
-    const data = React.useMemo(() => employees, []);
+    const employees = useSelector((state) => state.employees.employees);
+    const newEmployee = useSelector((state) => state.employees.addEmployee);
+    const [data, setData] = useState(employees);
+    console.log(employees)
     
-    const columns = React.useMemo(
-        () => [
+    useEffect(() => {
+        if (newEmployee) {
+            setData(prevData => [...prevData, newEmployee.payload.employee]);
+            console.log(newEmployee)
+        }
+    }, [newEmployee]);
+
+    const columns = React.useMemo(() => [
             {
-                Header: <FilterInput label="First Name" id="tri-firstname" />,
-                accessor: 'First Name',
+                Header: <FilterInput label="FirstName" id="tri-firstname" />,
+                accessor: 'firstName',
             },
             {
-                Header: <FilterInput label="Last Name" id="tri-lastname" />,
-                accessor: 'Last Name',
+                Header: <FilterInput label="LastName" id="tri-lastname" />,
+                accessor: 'lastName',
             },
             {
                 Header: <FilterInput label="Start Date" id="tri-startdate" />,
-                accessor: 'Start Date',
+                accessor: 'startDate',
             },
             {
                 Header: <FilterInput label="Department" id="tri-department" />,
-                accessor: 'Department',
+                accessor: 'department',
             },
             {
                 Header: <FilterInput label="Date of Birth" id="tri-dob" />,
-                accessor: 'Date of Birth',
+                accessor: 'dateOfBirth',
             },
             {
                 Header: <FilterInput label="Street" id="tri-street" />,
-                accessor: 'Street',
+                accessor: 'street',
             },
             {
                 Header: <FilterInput label="City" id="tri-city" />,
-                accessor: 'City',
+                accessor: 'city',
             },
             {
                 Header: <FilterInput label="State" id="tri-state" />,
-                accessor: 'State',
+                accessor: 'state',
             },
             {
                 Header: <FilterInput label="Zip Code" id="tri-zipcode" />,
-                accessor: 'Zip Code',
+                accessor: 'zipCode',
             },
         ],
         []
@@ -89,17 +98,24 @@ function ReactTable() {
                             </tr>
                         );
                     })}
+                    {/* Nouvelle ligne pour l'employé ajouté */}
+                    {newEmployee && (
+                        <tr className="employee-row">
+                            <td>{newEmployee?.employee?.FirstName}</td>
+                            <td>{newEmployee?.employee?.LastName}</td>
+                            <td>{newEmployee?.employee?.StartDate}</td>
+                            <td>{newEmployee?.employee?.Department}</td>
+                            <td>{newEmployee?.employee?.DateOfBirth}</td>
+                            <td>{newEmployee?.employee?.Street}</td>
+                            <td>{newEmployee?.employee?.City}</td>
+                            <td>{newEmployee?.employee?.State}</td>
+                            <td>{newEmployee?.employee?.ZipCode}</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </div>
     );
 }
-
 export default ReactTable;
-
-
-
-
-
-
 

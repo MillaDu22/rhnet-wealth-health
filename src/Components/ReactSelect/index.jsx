@@ -12,12 +12,12 @@ function ReactSelect ({ options, label, uniqueId }) {
         <div className="dropdown">
             <label className="label-dropdown" htmlFor={uniqueId}>{label}</label>
             <Select
-                id={uniqueId}
                 classNamePrefix="react-select"
                 aria-label="Default select example" 
                 defaultValue={defaultValue}
                 options={options}
                 onChange={handleChange}
+                inputId={uniqueId} 
                 name="show"
             />
         </div>

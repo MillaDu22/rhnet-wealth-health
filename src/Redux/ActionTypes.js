@@ -1,4 +1,7 @@
-export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
-export const SEARCH_EMPLOYEE = 'SEARCH_EMPLOYEE';
-export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
-export const SORT_EMPLOYEES = 'SORT_EMPLOYEES';
+export const IS_MODAL_OPEN = 'IS_MODAL_OPEN';
+export const ADD_NEW_EMPLOYEE = 'ADD_EMPLOYEE';
+export const SET_FORM_ERRORS = ' SET_FORM_ERRORS';
+export const IS_FORM_VALID = ' IS_FORM_VALID';
+
+
+

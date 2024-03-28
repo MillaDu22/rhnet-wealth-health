@@ -2,7 +2,7 @@ import React from 'react';
 import "./Home.css";
 import ReactTable from "../../Components/ReactTable/index.jsx";
 import Collapse from '../../Components/Collapse/index.jsx';
-import employees from '../../Datas/DataMockEmployees.js'; 
+
 
 function Home() {
     const options = [
@@ -24,7 +24,7 @@ function Home() {
                 </div>
             </div>
             <div id="react-table">
-                <ReactTable employees={employees} /> 
+            <ReactTable /> 
             </div>
             <div className="row-bottom">
                 <span className="account-employees">Showing
