@@ -2,9 +2,16 @@ import React from 'react';
 import "./Home.css";
 import ReactTable from "../../Components/ReactTable/index.jsx";
 import Collapse from '../../Components/Collapse/index.jsx';
-
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../../Redux/Actions.js';
 
 function Home() {
+    const dispatch = useDispatch();
+
+    const handleSearchChange = (event) => {
+        dispatch(setFilter(event.target.value)); // Met à jour le filtre dans le store //
+    };
+    
     const options = [
         { label: '10', value: '10' },
         { label: '25', value: '25' },
@@ -19,7 +26,7 @@ function Home() {
                 <Collapse options={options} label="Show entries" />
                 <div className="formData-home">
                     <label htmlFor="search-bar" id="label-search-bar">Search:</label>
-                    <input type="text" className="form-control-search" id="search-bar" />
+                    <input type="text" className="form-control-search" id="search-bar" onChange={handleSearchChange} />
                     <i className="fas fa-search"></i>
                 </div>
             </div>
@@ -42,7 +49,6 @@ function Home() {
 }
 
 export default Home;
-
 
 
 
