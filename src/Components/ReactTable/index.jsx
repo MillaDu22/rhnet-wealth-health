@@ -6,7 +6,7 @@ import './ReactTable.css';
 
 function ReactTable() {
     const employees = useSelector((state) => state.employees.employees);
-    const newEmployee = useSelector((state) => state.employees.addEmployee);
+    const newEmployee = useSelector((state) => state.employees.addNewEmployee);
     const [data, setData] = useState(employees);
     console.log(employees)
     
@@ -101,7 +101,7 @@ function ReactTable() {
                     {/* Nouvelle ligne pour l'employé ajouté */}
                     {newEmployee && (
                         <tr className="employee-row">
-                            <td>{newEmployee?.employee?.FirstName}</td>
+                            <td className = "new">{newEmployee?.employee?.FirstName}</td>
                             <td>{newEmployee?.employee?.LastName}</td>
                             <td>{newEmployee?.employee?.StartDate}</td>
                             <td>{newEmployee?.employee?.Department}</td>

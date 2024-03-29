@@ -5,7 +5,7 @@ import { IoCalendarOutline } from 'react-icons/io5';
 import './ReactCalendar.css';
 import TimePicker from '../TimePicker/index.jsx';
 
-function ReactCalendar({ uniqueId, label }) {
+function ReactCalendar({ uniqueId, label, onChange }) {
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState('12:00');
     const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +23,7 @@ function ReactCalendar({ uniqueId, label }) {
 
     const handleChangeDate = (newDate) => {
         setDate(newDate);
+        onChange(newDate); // Met à jour la date dans le formulaire parent //
         setIsOpen(false);
     };
 
@@ -70,5 +71,3 @@ function ReactCalendar({ uniqueId, label }) {
 }
 
 export default ReactCalendar;
-
-
