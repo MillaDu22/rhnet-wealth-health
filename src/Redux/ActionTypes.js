@@ -5,4 +5,3 @@ export const IS_FORM_VALID = 'IS_FORM_VALID';
 export const SET_FILTER = 'SET_FILTER';
 
 
-

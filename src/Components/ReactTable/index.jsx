@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../../Redux/Actions.js';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useTable, useFilters, useSortBy } from 'react-table';
 import FilterInput from '../FilterInput/index.jsx';
+import { BsArrowUp, BsArrowDown } from 'react-icons/bs'; 
 import './ReactTable.css';
 
 function ReactTable() {
@@ -11,6 +12,7 @@ function ReactTable() {
     const newEmployee = useSelector((state) => state.employees.addNewEmployee);
     const filter = useSelector((state) => state.employees.filter); // Lis le filtre du store //
     const [filteredEmployees, setFilteredEmployees] = useState([]);
+    const [sortBy, setSortBy] = useState([]);
 
     useEffect(() => {
     // Déclenche l'action setFilter avec la nouvelle valeur du filtre //
@@ -42,52 +44,78 @@ function ReactTable() {
                     city.includes(filter.toLowerCase()) ||
                     zipCode.includes(filter.toLowerCase())
                 );
-            } else {
-            return false; // Retourne false si employee est undefined pour éviter une erreur //
-            }
+            } 
+            return false;
         });
-        // Met à jour l'état des employés filtrés //
+        // Tri directionnel colonnes //
+        if (sortBy.length > 0) {
+            const [columnId, direction] = sortBy;
+            filteredData.sort((a, b) => {
+                const columnA = (a[columnId] || '').toString().toLowerCase();
+                const columnB = (b[columnId] || '').toString().toLowerCase();
+    
+                if (direction === 'desc') {
+                    return columnB.localeCompare(columnA);
+                } else {
+                    return columnA.localeCompare(columnB);
+                }
+            });
+        }
+
         setFilteredEmployees(filteredData);
-    }, [dispatch, employees, filter]); // Ajoute dispatch, employees et filter dans les dépendances de useEffect //
+    }, [dispatch, employees, filter, sortBy]);
+
+    const handleSortChange = useCallback((columnId, direction) => {
+        setSortBy([columnId, direction]);
+    }, []);
 
     const columns = React.useMemo(() => [
         {
-            Header: <FilterInput label="FirstName" id="tri-firstname" />,
+            Header: <FilterInput label="FirstName" id="tri-firstname" onChange={handleSortChange} />,
             accessor: 'firstName',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="LastName" id="tri-lastname" />,
+            Header: <FilterInput label="LastName" id="tri-lastname" onChange={handleSortChange}/>,
             accessor: 'lastName',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="Start Date" id="tri-startdate" />,
+            Header: <FilterInput label="Start Date" id="tri-startdate" onChange={handleSortChange}/>,
             accessor: 'startDate',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="Department" id="tri-department" />,
+            Header: <FilterInput label="Department" id="tri-department" onChange={handleSortChange}/>,
             accessor: 'department',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="Date of Birth" id="tri-dob" />,
+            Header: <FilterInput label="Date of Birth" id="tri-dob" onChange={handleSortChange}/>,
             accessor: 'dateOfBirth',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="Street" id="tri-street" />,
+            Header: <FilterInput label="Street" id="tri-street" onChange={handleSortChange}/>,
             accessor: 'street',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="City" id="tri-city" />,
+            Header: <FilterInput label="City" id="tri-city" onChange={handleSortChange}/>,
             accessor: 'city',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="State" id="tri-state" />,
+            Header: <FilterInput label="State" id="tri-state" onChange={handleSortChange}/>,
             accessor: 'state',
+            canSort: true,
         },
         {
-            Header: <FilterInput label="Zip Code" id="tri-zipcode" />,
+            Header: <FilterInput label="Zip Code" id="tri-zipcode" onChange={handleSortChange}/>,
             accessor: 'zipCode',
+            canSort: true,
         },
-    ], []);
+    ], [handleSortChange]);
 
     const {
         getTableProps,
@@ -103,52 +131,59 @@ function ReactTable() {
 
     return (
         <div className="container-table">
-        <table className="table table-hover" {...getTableProps()}>
-            <thead>
-            {headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                    {column.render('Header')}
-                    <span>
-                        {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                    </span>
-                    </th>
-                ))}
+            <table className="table table-hover" {...getTableProps()}>
+                <thead>
+                {headerGroups.map(headerGroup => (
+                    <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map(column => (
+                        <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                            <div className="column-header">
+                                <span>{column.render('Header')}</span>
+                                {column.canSort && (
+                                    <div className="sort-icons">
+                                    <BsArrowUp className={`arrow-icon ${column.isSorted && !column.isSortedDesc ? 'visible' : ''}`} />
+                                    <BsArrowDown className={`arrow-icon ${column.isSorted && column.isSortedDesc ? 'visible' : ''}`} />
+                                </div>
+                                )}
+                            </div>
+                        </th>
+                    ))}
                 </tr>
             ))}
             </thead>
-            <tbody {...getTableBodyProps()}>
-            {rows.map(row => {
-                prepareRow(row);
-                return (
-                <tr {...row.getRowProps()} className="employee-row">
-                    {row.cells.map(cell => {
+                <tbody {...getTableBodyProps()}>
+                {rows.map(row => {
+                    prepareRow(row);
                     return (
-                        <td {...cell.getCellProps()}>
-                        {cell.render('Cell')}
-                        </td>
+                    <tr {...row.getRowProps()} className="employee-row">
+                        {row.cells.map(cell => {
+                        return (
+                            <td {...cell.getCellProps()}>
+                            {cell.render('Cell')}
+                            </td>
+                        );
+                        })}
+                    </tr>
                     );
-                    })}
-                </tr>
-                );
-            })}
-            {newEmployee && (
-                <tr className="employee-row">
-                <td className="new">{newEmployee?.employee?.FirstName}</td>
-                <td>{newEmployee?.employee?.LastName}</td>
-                <td>{newEmployee?.employee?.StartDate}</td>
-                <td>{newEmployee?.employee?.Department}</td>
-                <td>{newEmployee?.employee?.DateOfBirth}</td>
-                <td>{newEmployee?.employee?.Street}</td>
-                <td>{newEmployee?.employee?.City}</td>
-                <td>{newEmployee?.employee?.State}</td>
-                <td>{newEmployee?.employee?.ZipCode}</td>
-                </tr>
-            )}
-            </tbody>
-        </table>
+                })}
+                {newEmployee && (
+                    <tr className="employee-row">
+                    <td className="new">{newEmployee?.employee?.FirstName}</td>
+                    <td>{newEmployee?.employee?.LastName}</td>
+                    <td>{newEmployee?.employee?.StartDate}</td>
+                    <td>{newEmployee?.employee?.Department}</td>
+                    <td>{newEmployee?.employee?.DateOfBirth}</td>
+                    <td>{newEmployee?.employee?.Street}</td>
+                    <td>{newEmployee?.employee?.City}</td>
+                    <td>{newEmployee?.employee?.State}</td>
+                    <td>{newEmployee?.employee?.ZipCode}</td>
+                    </tr>
+                )}
+                </tbody>
+            </table>
         </div>
     );
 }
 export default ReactTable;
+
+

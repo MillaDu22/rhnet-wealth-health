@@ -9,7 +9,8 @@ function Home() {
     const dispatch = useDispatch();
 
     const handleSearchChange = (event) => {
-        dispatch(setFilter(event.target.value)); // Met à jour le filtre dans le store //
+        dispatch(setFilter(event.target.value));
+         // Met à jour le filtre dans le store //
     };
     
     const options = [
@@ -23,7 +24,7 @@ function Home() {
         <main className="main-employees-list">
             <h2 className="title-main-page">Liste du personnel Wealth-health</h2>
             <div className="row-entries">
-                <Collapse options={options} label="Show entries" />
+                <Collapse options={options} label="Show entries"/>
                 <div className="formData-home">
                     <label htmlFor="search-bar" id="label-search-bar">Search:</label>
                     <input type="text" className="form-control-search" id="search-bar" onChange={handleSearchChange} />
@@ -31,7 +32,7 @@ function Home() {
                 </div>
             </div>
             <div id="react-table">
-            <ReactTable /> 
+            <ReactTable/> 
             </div>
             <div className="row-bottom">
                 <span className="account-employees">Showing
