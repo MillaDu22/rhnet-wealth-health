@@ -6,7 +6,7 @@ import FilterInput from '../FilterInput/index.jsx';
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs'; 
 import './ReactTable.css';
 
-function ReactTable() {
+function ReactTable({ pageSize, pageIndex, setPageSize, setPageIndex }) {
     const dispatch = useDispatch(); 
     const employees = useSelector((state) => state.employees.employees);
     const newEmployee = useSelector((state) => state.employees.addNewEmployee);
@@ -124,7 +124,14 @@ function ReactTable() {
         rows,
         prepareRow,
     } = useTable (
-        { columns, data: filteredEmployees },
+        { columns, 
+            data: filteredEmployees, 
+            initialState: { pageIndex, pageSize },
+            updateMyData: ({ pageIndex, pageSize }) => {
+                setPageIndex(pageIndex);
+                setPageSize(pageSize);
+            }
+        },
         useFilters,
         useSortBy
     );

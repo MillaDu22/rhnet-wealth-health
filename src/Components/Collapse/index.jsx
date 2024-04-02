@@ -3,9 +3,9 @@ import "./Collapse.css";
 
 function Collapse ({ options, label, collapseOnChange }) {
     const handleCollapseChange = (event) => {
-        collapseOnChange(event.target.value); // Appel la fonction de rappel collapseOnChange avec la nouvelle valeur sélectionnée //
+        const selectedPageSize = event.target.value;
+        collapseOnChange(selectedPageSize); // Appel la fonction de rappel collapseOnChange avec la nouvelle valeur sélectionnée //
     };
-
     return (
         <div className="formData-home">
             <label className="label-select-show" htmlFor="show">{label}</label>
@@ -14,7 +14,7 @@ function Collapse ({ options, label, collapseOnChange }) {
                 aria-label="Default select example" 
                 id="show" 
                 name="show"
-                onChange={handleCollapseChange} // Ajoute un gestionnaire d'événements onChange pour détecter les changements de sélection //
+                onChange={handleCollapseChange} // Ajoute le gestionnaire d'événements onChange pour détecter les changements de sélection //
             >
                 {options.map((option, index) => (
                     <option key={index} value={option.value}>{option.label}</option>
