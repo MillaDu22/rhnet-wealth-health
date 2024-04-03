@@ -3,8 +3,6 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './Reducers.js';
 
-
-
 // Configuration de la persistance pour rester connecté au rafraichissement de la page: redux-persist //
 const persistConfig = {
     key: 'root',

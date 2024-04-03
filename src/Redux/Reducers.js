@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_NEW_EMPLOYEE, IS_MODAL_OPEN, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER} from './ActionTypes';
+import { ADD_NEW_EMPLOYEE, IS_MODAL_OPEN, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER, SET_PAGE_SIZE} from './ActionTypes';
 
 
 const initialEmployeesState = {
@@ -8,6 +8,7 @@ const initialEmployeesState = {
     errors: {},
     employee: [],
     filter:'',
+    pageSize: 10,
     employees: [
         {
             "id": 1,
@@ -187,9 +188,17 @@ const employeesReducer = (state = initialEmployeesState, action) => {
             }
 
         case SET_FILTER:
+            console.log("SET_FILTER action dispatched with payload:", action.payload);
             return {
                 ...state,
                 filter: action.payload,
+            };
+
+        case SET_PAGE_SIZE:
+            console.log("SET_PAGE_SIZE action dispatched with payload:", action.payload);
+            return {
+                ...state,
+                pageSize: action.payload,
             };
 
         default:

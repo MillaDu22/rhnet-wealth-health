@@ -1,28 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./Home.css";
 import ReactTable from "../../Components/ReactTable/index.jsx";
 import Collapse from '../../Components/Collapse/index.jsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../Redux/Actions.js';
+import { useDispatch } from 'react-redux';
+import { setFilter, setPageSize } from '../../Redux/Actions.js';
 
 function Home() {
     const dispatch = useDispatch();
-    const filteredEmployees = useSelector((state) => state.employees.employees);
-    ////const [filteredEmployees, setFilteredEmployees] = useState([]); ///
-
     // SearchBar action setFilter //
     const handleSearchChange = (event) => {
         dispatch(setFilter(event.target.value));
-         // Met à jour le filtre dans le store //
     };
-
-    // state compteur pagination //
-    const [pageSize, setPageSize] = useState(1); // Nombre  page //
-    const [pageIndex, setPageIndex] = useState(0); // Index de la page actuelle //
-    const [totalEntries, setTotalEntries] = useState(); // state pour le nombre entries total de page //
-    const totalEmployees = filteredEmployees ? filteredEmployees.length : 0; // Nombre total d'employés après le filtrage //
-    const startEmployeeIndex = pageIndex +1; // Index de départ de la pagination //
-    const endEmployeeIndex = Math.min(startEmployeeIndex + pageSize, filteredEmployees.length); // Index de fin de la pagination //
 
     // Collapse entries //
     const options = [
@@ -33,17 +21,10 @@ function Home() {
     ];
 
     const handlePageSizeChange = (value) => {
-        console.log("Nombre d'employés par page sélectionné :", value);
-        setPageSize(Number(value)); // Met à jour le nombre d'éléments par page avec la nouvelle valeur sélectionnée //
-    };
-
-    // Gestion prev & next page //
-    const handleNextPage = () => {
-        setPageIndex(pageIndex + 1); // index de la page actuelle a +1 //
-    };
-    
-    const handlePrevPage = () => {
-        setPageIndex(pageIndex - 1); // index de la page actuelle a -1 //
+        // Dispatche l'action pour mettre à jour la taille de la page dans le store Redux //
+        console.log(value)
+        dispatch(setPageSize(Number(value)));
+        // Réinitialise l'index de la page à 0 lorsque la taille de la page est modifiée //
     };
 
     return (
@@ -61,40 +42,9 @@ function Home() {
                 </div>
             </div>
             <div id="react-table">
-            <ReactTable 
-                pageSize={pageSize} 
-                pageIndex={pageIndex} 
-                setPageSize={setPageSize} 
-                setPageIndex={setPageIndex} 
-                setTotalEntries={setTotalEntries} 
-                filteredEmployees={filteredEmployees}
-            /> 
-            </div>
-            <div className="row-bottom">
-                <span className="account-employees">Showing
-                    <p className="show-number">{startEmployeeIndex}</p>to
-                    <p className="show-number-to">{endEmployeeIndex}</p>of 
-                    <p className="show-number-of">{totalEmployees}</p>entries
-                </span>
-                <div className="container-button">
-                    <button className="prev" 
-                        type="button" name="prev" 
-                        onClick={handlePrevPage} 
-                        disabled={pageIndex === 0}>Prev
-                    </button>
-                    <button className="next" 
-                        type="button" 
-                        name="next" 
-                        onClick={handleNextPage} 
-                        disabled={totalEntries <= (pageIndex + 1) * pageSize}>Next
-                    </button>
-                </div>
+                <ReactTable /> 
             </div>
         </main>
     );
 }
-
 export default Home;
-
-
-

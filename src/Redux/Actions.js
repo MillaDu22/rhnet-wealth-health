@@ -1,4 +1,4 @@
-import { IS_MODAL_OPEN, ADD_NEW_EMPLOYEE, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER} from './ActionTypes';
+import { IS_MODAL_OPEN, ADD_NEW_EMPLOYEE, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER, SET_PAGE_SIZE} from './ActionTypes';
 
 export const isModalOpen = (isOpen) => ({
     type: IS_MODAL_OPEN,
@@ -36,5 +36,11 @@ export const setFilter = (filter) => ({
     type: SET_FILTER,
     payload: filter,
 });
+
+export const setPageSize = (pageSize) => ({
+        type: SET_PAGE_SIZE,
+        payload: pageSize,
+});
+
 
 

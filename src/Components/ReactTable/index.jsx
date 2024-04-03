@@ -1,17 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../../Redux/Actions.js';
 import React, { useEffect, useState, useCallback } from 'react';
-import { useTable, useFilters, useSortBy } from 'react-table';
+import { useTable, useFilters, useSortBy, usePagination } from 'react-table';
 import FilterInput from '../FilterInput/index.jsx';
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs'; 
 import './ReactTable.css';
 
-function ReactTable({ pageSize, pageIndex, setPageSize, setPageIndex }) {
+function ReactTable() {
     const dispatch = useDispatch(); 
     const employees = useSelector((state) => state.employees.employees);
     const newEmployee = useSelector((state) => state.employees.addNewEmployee);
     const filter = useSelector((state) => state.employees.filter); // Lis le filtre du store //
+    const pageSize = useSelector((state) => state.employees.pageSize);
     const [filteredEmployees, setFilteredEmployees] = useState([]);
+    const [pageIndex, setPageIndex] = useState(0);
     const [sortBy, setSortBy] = useState([]);
 
     useEffect(() => {
@@ -121,19 +123,23 @@ function ReactTable({ pageSize, pageIndex, setPageSize, setPageIndex }) {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
         prepareRow,
+        page, 
+        canPreviousPage,
+        canNextPage,
+        nextPage,
+        previousPage,
     } = useTable (
         { columns, 
-            data: filteredEmployees, 
             initialState: { pageIndex, pageSize },
-            updateMyData: ({ pageIndex, pageSize }) => {
+            data: filteredEmployees, 
+            updateMyData: ({ pageIndex }) => {
                 setPageIndex(pageIndex);
-                setPageSize(pageSize);
             }
         },
         useFilters,
-        useSortBy
+        useSortBy, 
+        usePagination
     );
 
     return (
@@ -159,7 +165,7 @@ function ReactTable({ pageSize, pageIndex, setPageSize, setPageIndex }) {
             ))}
             </thead>
                 <tbody {...getTableBodyProps()}>
-                {rows.map(row => {
+                {page.map(row => {
                     prepareRow(row);
                     return (
                     <tr {...row.getRowProps()} className="employee-row">
@@ -188,6 +194,28 @@ function ReactTable({ pageSize, pageIndex, setPageSize, setPageIndex }) {
                 )}
                 </tbody>
             </table>
+            <div className="row-bottom">
+                <span className="account-employees">Showing
+                    <p className="show-number">{(pageIndex + 1) }</p>to
+                    <p className="show-number-to">{ (pageSize + 1) / pageSize }</p>of 
+                    <p className="show-number-of">{ filteredEmployees.length }</p>entries
+                </span>
+                <div className="container-button">
+                    <button className="prev" 
+                        type="button"
+                        name="name"
+                        onClick={() => previousPage()} 
+                        disabled={!canPreviousPage}>Prev
+                    </button>
+
+                    <button className="next"
+                        type="button"
+                        name="next"
+                        onClick={() => nextPage()} 
+                        disabled={!canNextPage}>Next
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
