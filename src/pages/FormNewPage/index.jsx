@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { departments } from "../../Datas/DataDepartment.js";
 import { states } from "../../Datas/DataStates.js";
-import Modal from "../../Components/Modal/index.jsx";
+import { Modale } from  "react-modale-by-ldla";
 import ReactSelect from "../../Components/ReactSelect/index.jsx";
 import ReactCalendar from "../../Components/ReactCalendar/index.jsx";
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,7 +37,6 @@ function FormNewPage() {
             startDate: newDate,
         }));
     };
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -108,6 +107,12 @@ function FormNewPage() {
             department: ''
         });
     };
+
+    const [isOpen, setIsOpen] = useState(false);
+    const handleOpenModal = () => {
+        setIsOpen(true);
+    };
+
     return (
         <div className="page-create">
             <h2 className="title-page">RHNet - Create new employees</h2>
@@ -243,10 +248,15 @@ function FormNewPage() {
                         <span className="error-message">{formErrors.department}</span>
                     )}
 
-                    <button type="submit" className="btn btn-primary btn-submit" data-bs-toggle="modal" data-bs-target="#Modal">Save</button>
+                    <button type="submit" className="btn btn-primary btn-submit" data-bs-toggle="modal" data-bs-target="#Modal" onClick={handleOpenModal}>Save</button>
                 </div>
             </form>
-            <Modal />
+            <Modale
+                isOpen={isOpen} 
+                onClose={() => setIsOpen(false)} 
+                title="Confirmation &#10004;"
+                content={<p>Employee created.</p>}
+            />
         </div>
     );
 }

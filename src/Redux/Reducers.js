@@ -97,7 +97,7 @@ const initialEmployeesState = {
         {
             "id": 8,
             "firstName": "Gulum",
-            "lastName": "monster",
+            "lastName": "Monster",
             "startDate": "04/08/1977",
             "department": "Sales" ,
             "dateOfBirth": "29/01/1952",

@@ -117,8 +117,9 @@ html {
     width:100%;
     align-items: center;
     justify-content: space-between;
-    padding-left:10%;
-    padding-right:10%;
+    padding-top:30px;
+    padding-left:0%;
+    padding-right:0%;
 }
 
 .account-employees {
