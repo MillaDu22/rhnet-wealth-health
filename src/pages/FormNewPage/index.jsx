@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { departments } from "../../Datas/DataDepartment.js";
 import { states } from "../../Datas/DataStates.js";
 import { Modale } from  "react-modale-by-ldla";
 import ReactSelect from "../../Components/ReactSelect/index.jsx";
 import ReactCalendar from "../../Components/ReactCalendar/index.jsx";
 import { useSelector, useDispatch } from 'react-redux';
-import { isFormValid, addNewEmployee, isModalOpen, setFormErrors } from '../../Redux/Actions';
+import { isFormValid, addNewEmployee, setFormErrors } from '../../Redux/Actions';
 import "./FormNewPage.css";
 
 function FormNewPage() {
-    const formErrors = useSelector((state) => state.employees.setFormErrors);
+    const [isOpen, setIsOpen] = useState(false); // State modale par défaut //
+    const formErrors = useSelector((state) => state.employees.errors);
     const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
@@ -88,12 +89,12 @@ function FormNewPage() {
         // Si des erreurs sont présentes, dispatch l'action setFormErrors //
         if (Object.keys(errors).length > 0) {
             dispatch(setFormErrors(errors));
-            dispatch(isModalOpen(false));
+            setIsOpen(false);
             return; // Arrête le traitement de la soumission du formulaire //
         }
 
         dispatch(isFormValid(true));
-        dispatch(isModalOpen(true));
+        setIsOpen(true);
         dispatch(addNewEmployee(formData));
         setFormData({
             firstName: '',
@@ -106,11 +107,6 @@ function FormNewPage() {
             zipCode: '',
             department: ''
         });
-    };
-
-    const [isOpen, setIsOpen] = useState(false);
-    const handleOpenModal = () => {
-        setIsOpen(true);
     };
 
     return (
@@ -248,7 +244,7 @@ function FormNewPage() {
                         <span className="error-message">{formErrors.department}</span>
                     )}
 
-                    <button type="submit" className="btn btn-primary btn-submit" data-bs-toggle="modal" data-bs-target="#Modal" onClick={handleOpenModal}>Save</button>
+                    <button type="submit" className="btn btn-primary btn-submit" data-bs-toggle="modal" data-bs-target="#Modal">Save</button>
                 </div>
             </form>
             <Modale

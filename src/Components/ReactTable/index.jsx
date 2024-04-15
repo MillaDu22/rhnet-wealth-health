@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from '../../Redux/Actions.js';
+import { setFilter, setPageSize} from '../../Redux/Actions.js';
 import React, { useEffect, useState, useCallback } from 'react';
 import { useTable, useFilters, useSortBy, usePagination } from 'react-table';
 import FilterInput from '../FilterInput/index.jsx';
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs'; 
 import './ReactTable.css';
+
 
 function ReactTable() {
     const dispatch = useDispatch(); 
@@ -17,11 +18,10 @@ function ReactTable() {
     const [sortBy, setSortBy] = useState([]);
 
     useEffect(() => {
-    // Déclenche l'action setFilter avec la nouvelle valeur du filtre //
+        // Déclenche l'action setFilter avec la nouvelle valeur du filtre //
         dispatch(setFilter(filter));
-
         // Filtre les employés en fonction du filtre //
-        const filteredData = employees.filter((employee) => {
+        let filteredData = employees.filter((employee) => {
             // Vérifie d'abord si employee est défini pour éviter les erreurs de 'undefined' //
             if (employee) {
                 // Convertit les valeurs en minuscules pour une correspondance insensible à la casse //
@@ -66,6 +66,7 @@ function ReactTable() {
 
         setFilteredEmployees(filteredData);
     }, [dispatch, employees, filter, sortBy]);
+    
 
     const handleSortChange = useCallback((columnId, direction) => {
         setSortBy([columnId, direction]);
@@ -135,12 +136,23 @@ function ReactTable() {
             data: filteredEmployees, 
             updateMyData: ({ pageIndex }) => {
                 setPageIndex(pageIndex);
+                setPageSize(pageSize);
             }
         },
         useFilters,
         useSortBy, 
         usePagination
     );
+
+    const handlePrevPage = () => {
+        previousPage();
+        setPageIndex(pageIndex - 1); // Met à jour la page actuelle au counter après avoir cliqué sur Prev //
+    };
+
+    const handleNextPage = () => {
+        nextPage();
+        setPageIndex(pageIndex + 1); // Met à jour la page actuelle au counter après avoir cliqué sur Next //
+    };
 
     return (
         <div className="container-table">
@@ -197,21 +209,23 @@ function ReactTable() {
             <div className="row-bottom">
                 <span className="account-employees">Showing
                     <p className="show-number">{(pageIndex + 1 ) }</p>to
-                    <p className="show-number-to">{ (pageSize + 1) / pageSize }</p>of 
+                    <p className="show-number-to">{Math.ceil(filteredEmployees.length / pageSize)}</p>of 
                     <p className="show-number-of">{ filteredEmployees.length }</p>entries
                 </span>
                 <div className="container-button">
                     <button className="prev" 
                         type="button"
                         name="name"
-                        onClick={() => previousPage()} 
+                        //onClick={() => previousPage()} 
+                        onClick={handlePrevPage} 
                         disabled={!canPreviousPage}>Prev
                     </button>
 
                     <button className="next"
                         type="button"
                         name="next"
-                        onClick={() => nextPage()} 
+                        onClick={handleNextPage} 
+                        //onClick={() => nextPage()} 
                         disabled={!canNextPage}>Next
                     </button>
                 </div>
@@ -220,5 +234,4 @@ function ReactTable() {
     );
 }
 export default ReactTable;
-
 

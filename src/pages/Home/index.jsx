@@ -14,17 +14,21 @@ function Home() {
 
     // Collapse entries //
     const options = [
-        { label: '10', value: '10' },
-        { label: '25', value: '25' },
-        { label: '50', value: '50' },
-        { label: '100', value: '100' },
+        { label: '10', value: 10 },
+        { label: '25', value: 25 },
+        { label: '50', value: 50 },
+        { label: '100', value: 100 },
     ];
 
-    const handlePageSizeChange = (value) => {
+    const handlePageSizeChange = (value, event) => {
         // Dispatche l'action pour mettre à jour la taille de la page dans le store Redux //
-        console.log(value)
+        console.log(value);
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
         dispatch(setPageSize(Number(value)));
-        // Réinitialise l'index de la page à 0 lorsque la taille de la page est modifiée //
+        // Met à jour l'état du nombre d'entrées sélectionnées //
     };
 
     return (
@@ -33,7 +37,7 @@ function Home() {
             <div className="row-entries">
                 <Collapse options={options} 
                     label="Show entries"
-                    collapseOnChange={handlePageSizeChange}
+                    collapseOnChange={(value, event) => handlePageSizeChange(value, event)}
                 />
                 <div className="formData-home">
                     <label htmlFor="search-bar" id="label-search-bar">Search:</label>

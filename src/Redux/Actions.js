@@ -1,19 +1,15 @@
-import { IS_MODAL_OPEN, ADD_NEW_EMPLOYEE, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER, SET_PAGE_SIZE} from './ActionTypes';
-
-export const isModalOpen = (isOpen) => ({
-    type: IS_MODAL_OPEN,
-    payload: isOpen,
-});
+import { ADD_NEW_EMPLOYEE, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER, SET_PAGE_SIZE} from './ActionTypes';
 
 export const addNewEmployee = (employee) => {
     // Récupére la date de début au format JJ/MM/AAAA //
     const formattedStartDate = employee.startDate.toLocaleDateString('fr-FR');
+    const formattedDateOfBirth = employee.dateOfBirth.toLocaleDateString('fr-FR');
 
     // Crée une copie de l'employé avec les dates de début et de naissance formatées //
     const serializedEmployee = {
         ...employee,
         startDate: formattedStartDate,
-        dateOfBirth: formattedStartDate,
+        dateOfBirth: formattedDateOfBirth,
     };
 
     return {

@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-import { ADD_NEW_EMPLOYEE, IS_MODAL_OPEN, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER, SET_PAGE_SIZE} from './ActionTypes';
+import { ADD_NEW_EMPLOYEE, SET_FORM_ERRORS, IS_FORM_VALID, SET_FILTER, SET_PAGE_SIZE} from './ActionTypes';
 
 
 const initialEmployeesState = {
     isFormValid:false,
-    isModalOpen: false, 
     errors: {},
     employee: [],
     filter:'',
@@ -165,26 +164,28 @@ const employeesReducer = (state = initialEmployeesState, action) => {
             ...state,
             employees: [...state.employees, action.payload],
         };
-        
-        case IS_MODAL_OPEN:
-            console.log("IS_MODAL_OPEN action dispatched");
-            return {
-                ...state, 
-                isModalOpen: action.payload,
-            }
 
         case SET_FORM_ERRORS:
             console.log("SET_FORM_ERRORS action dispatched with payload:", action.payload);
             return {
                 ...state,
-                setFormErrors: action.payload,
+                errors: action.payload,
             };
 
         case IS_FORM_VALID:
             console.log("IS_FORM_VALID action dispatched with payload:", action.payload);
-            return {
-                ...state,
-                isFormValid: action.payload,
+            if (action.payload === true) {
+                // Si le formulaire est valide, réinitialisez les erreurs à un état vide
+                return {
+                    ...state,
+                    isFormValid: action.payload,
+                    errors: {},
+                };
+            } else {
+                return {
+                    ...state,
+                    isFormValid: action.payload,
+                };
             }
 
         case SET_FILTER:

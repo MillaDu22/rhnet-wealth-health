@@ -11,6 +11,15 @@ function ReactCalendar({ uniqueId, label, onChange }) {
     const [isOpen, setIsOpen] = useState(false);
     const calendarRef = useRef();
 
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        let month = (1 + date.getMonth()).toString().padStart(2, '0');
+        let day = date.getDate().toString().padStart(2, '0');
+    
+        return `${day}/${month}/${year}`;
+    };
+    
+
     const handleClickOutside = (event) => {
         if (calendarRef.current && !calendarRef.current.contains(event.target)) {
             setIsOpen(false);
@@ -44,7 +53,7 @@ function ReactCalendar({ uniqueId, label, onChange }) {
             <div className="calendar-input-container">
                 <input
                     type="text"
-                    value={date.toISOString().split('T')[0]}
+                    value={formatDate(date)}
                     readOnly
                     className="calendar-date-input"
                     onClick={toggleCalendar}
