@@ -19,7 +19,7 @@ const initialEmployeesState = {
             "street": "14 rue Victor Hugo",
             "city": "Sète",
             "state": "Virginia",
-            "zipCode": "001",
+            "zipCode": "34200",
         },
         {
             "id": 2,
@@ -31,7 +31,7 @@ const initialEmployeesState = {
             "street": "2 rue Gambetta",
             "city": "Pezenas",
             "state": "South Carolina",
-            "zipCode": "002",
+            "zipCode": "34120",
         },
         {
             "id": 3,
@@ -43,7 +43,7 @@ const initialEmployeesState = {
             "street": "Le travers",
             "city": "Saint-Malo",
             "state": "South Dakota",
-            "zipCode": "003",
+            "zipCode": "35400",
         },
         {
             "id": 4,
@@ -53,9 +53,9 @@ const initialEmployeesState = {
             "department": "Legal" ,
             "dateOfBirth": "12/06/1924",
             "street": "16 bd Las Vegas",
-            "city": "USA",
+            "city": "Sacramento",
             "state": "California",
-            "zipCode": "004",
+            "zipCode": "95814",
         },
         {
             "id": 5,
@@ -67,7 +67,7 @@ const initialEmployeesState = {
             "street": "21 dock of marina",
             "city": "Arkansas",
             "state": "Tennessee",
-            "zipCode": "005",
+            "zipCode": "71601",
         },
         {
             "id": 6,
@@ -79,7 +79,7 @@ const initialEmployeesState = {
             "street": "678 North Playa",
             "city": "Manathan",
             "state": "Florida",
-            "zipCode": "006",
+            "zipCode": "10005",
         },
         {
             "id": 7,
@@ -91,7 +91,7 @@ const initialEmployeesState = {
             "street": "Palais de Windsor",
             "city": "Windsor",
             "state": "Alabama",
-            "zipCode": "007",
+            "zipCode": "41403",
         },
         {
             "id": 8,
@@ -103,7 +103,7 @@ const initialEmployeesState = {
             "street": "valls de Andorra",
             "city": "Puicerda",
             "state": "Mississippi",
-            "zipCode": "008",
+            "zipCode": "17520",
         },
         {
             "id": 9,
@@ -115,7 +115,7 @@ const initialEmployeesState = {
             "street": "10 de la Vega",
             "city": "Las Vegas",
             "state": "Virginia",
-            "zipCode": "009",
+            "zipCode": "88901",
         },
         {
             "id": 10,
@@ -127,7 +127,7 @@ const initialEmployeesState = {
             "street": "118 Time Square",
             "city": "Liverpool",
             "state": "New Jersey",
-            "zipCode": "010",
+            "zipCode": "07015",
         },
         {
             "id": 11,
@@ -139,7 +139,7 @@ const initialEmployeesState = {
             "street": "2 av de la playa",
             "city": "Lille",
             "state": "south Carolina",
-            "zipCode": "011",
+            "zipCode": "59000",
         },
         {
             "id": 12,
@@ -151,7 +151,7 @@ const initialEmployeesState = {
             "street": "Ile de Saint Denis",
             "city": "Saint-Denis",
             "state": "florida",
-            "zipCode": "012",
+            "zipCode": "93066",
         },
     ]
 };
@@ -159,21 +159,18 @@ const initialEmployeesState = {
 const employeesReducer = (state = initialEmployeesState, action) => {
     switch (action.type) {
         case ADD_NEW_EMPLOYEE:
-            console.log("ADD_NEW_EMPLOYEE action dispatched with payload:", action.payload);
         return {
             ...state,
             employees: [...state.employees, action.payload],
         };
 
         case SET_FORM_ERRORS:
-            console.log("SET_FORM_ERRORS action dispatched with payload:", action.payload);
             return {
                 ...state,
                 errors: action.payload,
             };
 
         case IS_FORM_VALID:
-            console.log("IS_FORM_VALID action dispatched with payload:", action.payload);
             if (action.payload === true) {
                 // Si le formulaire est valide, réinitialisez les erreurs à un état vide
                 return {
@@ -189,14 +186,12 @@ const employeesReducer = (state = initialEmployeesState, action) => {
             }
 
         case SET_FILTER:
-            console.log("SET_FILTER action dispatched with payload:", action.payload);
             return {
                 ...state,
                 filter: action.payload,
             };
 
         case SET_PAGE_SIZE:
-            console.log("SET_PAGE_SIZE action dispatched with payload:", action.payload);
             return {
                 ...state,
                 pageSize: action.payload,

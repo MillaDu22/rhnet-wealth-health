@@ -2,10 +2,13 @@ import React from 'react';
 import "./Home.css";
 import ReactTable from "../../Components/ReactTable/index.jsx";
 import Collapse from '../../Components/Collapse/index.jsx';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilter, setPageSize } from '../../Redux/Actions.js';
 
+
 function Home() {
+    const pageSize = useSelector((state) => state.employees.pageSize);
+
     const dispatch = useDispatch();
     // SearchBar action setFilter //
     const handleSearchChange = (event) => {
@@ -22,13 +25,12 @@ function Home() {
 
     const handlePageSizeChange = (value, event) => {
         // Dispatche l'action pour mettre à jour la taille de la page dans le store Redux //
-        console.log(value);
         if (event) {
             event.preventDefault();
-            event.stopPropagation();
         }
         dispatch(setPageSize(Number(value)));
         // Met à jour l'état du nombre d'entrées sélectionnées //
+        window.location.reload(false);
     };
 
     return (
@@ -37,6 +39,7 @@ function Home() {
             <div className="row-entries">
                 <Collapse options={options} 
                     label="Show entries"
+                    selectedValue={pageSize} 
                     collapseOnChange={(value, event) => handlePageSizeChange(value, event)}
                 />
                 <div className="formData-home">

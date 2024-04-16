@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Collapse.css";
 
-function Collapse ({ options, label, collapseOnChange }) {
+function Collapse ({ options, label, collapseOnChange, selectedValue }) {
     const handleCollapseChange = (event) => {
         const selectedPageSize = event.target.value;
         collapseOnChange(selectedPageSize); // Appel la fonction de rappel collapseOnChange avec la nouvelle valeur sélectionnée //
@@ -14,6 +14,7 @@ function Collapse ({ options, label, collapseOnChange }) {
                 aria-label="Default select example" 
                 id="show" 
                 name="show"
+                value={selectedValue} // Utilise la valeur sélectionnée pour maintenir la cohérence avec l'état du composant parent //
                 onChange={handleCollapseChange} // Ajoute le gestionnaire d'événements onChange pour détecter les changements de sélection //
             >
                 {options.map((option, index) => (
@@ -25,10 +26,6 @@ function Collapse ({ options, label, collapseOnChange }) {
 }
 
 export default Collapse;
-
-
-
-
 
 
 

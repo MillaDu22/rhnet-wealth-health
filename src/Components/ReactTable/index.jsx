@@ -65,8 +65,7 @@ function ReactTable() {
         }
 
         setFilteredEmployees(filteredData);
-    }, [dispatch, employees, filter, sortBy]);
-    
+    }, [dispatch, employees, filter, sortBy, pageSize]);
 
     const handleSortChange = useCallback((columnId, direction) => {
         setSortBy([columnId, direction]);
@@ -216,7 +215,6 @@ function ReactTable() {
                     <button className="prev" 
                         type="button"
                         name="name"
-                        //onClick={() => previousPage()} 
                         onClick={handlePrevPage} 
                         disabled={!canPreviousPage}>Prev
                     </button>
@@ -225,7 +223,6 @@ function ReactTable() {
                         type="button"
                         name="next"
                         onClick={handleNextPage} 
-                        //onClick={() => nextPage()} 
                         disabled={!canNextPage}>Next
                     </button>
                 </div>
