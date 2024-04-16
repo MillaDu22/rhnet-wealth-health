@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/rhnet-wealth-health/static/css/main.b25b5ea1.css",
-    "main.js": "/rhnet-wealth-health/static/js/main.aa5ff11b.js",
+    "main.js": "/rhnet-wealth-health/static/js/main.5227711e.js",
     "static/js/845.e465f8a0.chunk.js": "/rhnet-wealth-health/static/js/845.e465f8a0.chunk.js",
     "static/media/logo-wealth-health.png": "/rhnet-wealth-health/static/media/logo-wealth-health.3dbe2d1fe44e8ff53152.png",
     "index.html": "/rhnet-wealth-health/index.html",
     "main.b25b5ea1.css.map": "/rhnet-wealth-health/static/css/main.b25b5ea1.css.map",
-    "main.aa5ff11b.js.map": "/rhnet-wealth-health/static/js/main.aa5ff11b.js.map",
+    "main.5227711e.js.map": "/rhnet-wealth-health/static/js/main.5227711e.js.map",
     "845.e465f8a0.chunk.js.map": "/rhnet-wealth-health/static/js/845.e465f8a0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b25b5ea1.css",
-    "static/js/main.aa5ff11b.js"
+    "static/js/main.5227711e.js"
   ]
 }
