@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# RHNET-WEALTH-HEALTH
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Description de l'image](/src/Assets/images/Home1.png)
+![Description de l'image](/src/Assets/images/Home2.png)
+![Description de l'image](/src/Assets/images/Home3.png)
+![Description de l'image](/src/Assets//images//Form1.png)
+![Description de l'image](/src/Assets//images//Form2.png)
+![Description de l'image](/src/Assets//images//Form3.png)
+
+conversion d’une application de jQuery vers React.
 
 ## Available Scripts
 
@@ -8,63 +15,62 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+React, 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+JavaScript, 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Css, 
+
+npm , 
+
+React-router, 
+
+Redux
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Cette société utilisait une application web interne, appelée HRnet, qui gère les dossiers des employés.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+L'application était ancienne et utilise jQuery côté front end, ce qui entraînait des bugs considérables et une augmentation des plaintes en interne.
 
-### Code Splitting
+Mon équipe de développement s'efforçait depuis un certain temps déjà de mettre à niveau l'application.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+La direction nous a enfin laisser mettre à jour HRnet et le convertir en React ! 
 
-### Analyzing the Bundle Size
+Les plus gros problèmes pour les utilisateurs de HRnet étaient les sélecteurs de date, les fenêtres modales, les menus déroulants et les tableaux.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Nous avions reçu plusieurs plaintes disant que ces plugins jQuery sont très lents.  
 
-### Making a Progressive Web App
+Nous avons donc créer nos propres composants React à la place de ces plugins jQuery tiers qui sont utilisés dans l'interface utilisateur. La conversion de ces plugins jQuery en composants React améliore les performances et la stabilité.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Voici la listes des plugins jQuery utilisés qui devaient être convertis : 
 
-### Advanced Configuration
+Plugin de sélection de date
+Plugin de fenêtre modale - jQuery.modal.js
+Menus déroulants
+Plugin pour les tables de données
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Je suis chargée pour ma part de convertir toute l'application en React, de documenter le code et de créer mon propre composant modale publié sur npm sous forme de package. Ce composant doit etre documenté également.
+Il est nécessaire aussi de faire des comparaisons de performance entre avant et après.
 
-### Deployment
+## Link old repository
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+le repository vers la version jquery: https://github.com/OpenClassrooms-Student-Center/P12_Front-end
 
-### `npm run build` fails to minify
+## Links new repositories
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+le repository package npm : https://github.com/MillaDu22/react-modale-by-ldla
+
+le repository  RhNet convertit React : https://github.com/MillaDu22/rhnet-wealth-health
+
+## Link'deployed app
+
+la GhPage: https://milladu22.github.io/rhnet-wealth-health/
