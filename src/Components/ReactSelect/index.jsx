@@ -2,9 +2,18 @@ import React from 'react';
 import Select from 'react-select';
 import './ReactSelect.css';
 
+/**
+ * Composant React représentant un sélecteur personnalisé.
+ * @param {object} props - Les propriétés du composant.
+ * @param {object[]} props.options - Les options à afficher dans le sélecteur.
+ * @param {string} props.label - Le libellé du sélecteur.
+ * @param {string} props.uniqueId - L'identifiant unique du sélecteur.
+ * @param {string} props.value - La valeur sélectionnée actuellement dans le sélecteur.
+ * @param {function} props.onChange - La fonction de rappel à appeler lorsqu'une nouvelle option est sélectionnée.
+ * @returns {JSX.Element} Le composant ReactSelect.
+ */
 function ReactSelect ({ options, label, uniqueId, value, onChange }) {
     const defaultValue = options.find(option => option.isDefault) || options[0]; 
-    // Utilise la première option si aucune option par défaut n'est trouvée //
 
     return (
         <div className="dropdown">

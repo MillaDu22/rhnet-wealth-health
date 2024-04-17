@@ -6,21 +6,24 @@ import FilterInput from '../FilterInput/index.jsx';
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs'; 
 import './ReactTable.css';
 
-
+/**
+ * Composant React représentant un tableau interactif pour afficher les employés.
+ * @returns {JSX.Element} Le composant ReactTable.
+ */
 function ReactTable() {
     const dispatch = useDispatch(); 
-    const employees = useSelector((state) => state.employees.employees);
-    const newEmployee = useSelector((state) => state.employees.addNewEmployee);
-    const filter = useSelector((state) => state.employees.filter); // Lis le filtre du store //
-    const pageSize = useSelector((state) => state.employees.pageSize);
-    const [filteredEmployees, setFilteredEmployees] = useState([]);
-    const [pageIndex, setPageIndex] = useState(0);
-    const [sortBy, setSortBy] = useState([]);
+    const employees = useSelector((state) => state.employees.employees); // employees state initial store //
+    const newEmployee = useSelector((state) => state.employees.addNewEmployee); // nouvel employee action store //
+    const filter = useSelector((state) => state.employees.filter); // filtre employee action store //
+    const pageSize = useSelector((state) => state.employees.pageSize); // selected pageSize action store //
+    const [filteredEmployees, setFilteredEmployees] = useState([]); // state local employees filtrés //
+    const [pageIndex, setPageIndex] = useState(0); // state local counter page //
+    const [sortBy, setSortBy] = useState([]); // state local input columns //
 
     useEffect(() => {
-        // Déclenche l'action setFilter avec la nouvelle valeur du filtre //
+        // Déclenche l'action setFilter avec la nouvelle valeur du filtre searchBar //
         dispatch(setFilter(filter));
-        // Filtre les employés en fonction du filtre //
+        // Filtre les employés en fonction du des lettres entrées dans la searchBar //
         let filteredData = employees.filter((employee) => {
             // Vérifie d'abord si employee est défini pour éviter les erreurs de 'undefined' //
             if (employee) {
@@ -34,7 +37,7 @@ function ReactTable() {
                 const state = employee.state ? employee.state.toLowerCase() : '';
                 const department = employee.department ? employee.department.toLowerCase() : '';
                 const zipCode = employee.zipCode ? employee.zipCode.toLowerCase() : '';
-                // Vérifie si une des propriétés contient la sous-chaîne du filtre //
+                // Vérifie si une des propriétés contient la sous-chaîne du filtre tapé dans la searchBar //
                 return (
                     firstName.includes(filter.toLowerCase()) ||
                     lastName.includes(filter.toLowerCase()) ||
@@ -49,7 +52,7 @@ function ReactTable() {
             } 
             return false;
         });
-        // Tri directionnel colonnes //
+        // Tri directionnel colonnes, methode sort et localeCompare (par alphabétique, numérique) //
         if (sortBy.length > 0) {
             const [columnId, direction] = sortBy;
             filteredData.sort((a, b) => {
@@ -67,6 +70,7 @@ function ReactTable() {
         setFilteredEmployees(filteredData);
     }, [dispatch, employees, filter, sortBy, pageSize]);
 
+    // tri columns après avoir cliqué sur les fleches //
     const handleSortChange = useCallback((columnId, direction) => {
         setSortBy([columnId, direction]);
     }, []);
@@ -142,15 +146,15 @@ function ReactTable() {
         useSortBy, 
         usePagination
     );
-
+    // Met à jour la page actuelle au counter après avoir cliqué sur Prev //
     const handlePrevPage = () => {
         previousPage();
-        setPageIndex(pageIndex - 1); // Met à jour la page actuelle au counter après avoir cliqué sur Prev //
+        setPageIndex(pageIndex - 1); 
     };
-
+    // Met à jour la page actuelle au counter après avoir cliqué sur Next //
     const handleNextPage = () => {
         nextPage();
-        setPageIndex(pageIndex + 1); // Met à jour la page actuelle au counter après avoir cliqué sur Next //
+        setPageIndex(pageIndex + 1);
     };
 
     return (
@@ -175,6 +179,7 @@ function ReactTable() {
                 </tr>
             ))}
             </thead>
+
                 <tbody {...getTableBodyProps()}>
                 {page.map(row => {
                     prepareRow(row);
@@ -205,12 +210,14 @@ function ReactTable() {
                 )}
                 </tbody>
             </table>
+
             <div className="row-bottom">
                 <span className="account-employees">Showing
                     <p className="show-number">{(pageIndex + 1 ) }</p>to
                     <p className="show-number-to">{Math.ceil(filteredEmployees.length / pageSize)}</p>of 
                     <p className="show-number-of">{ filteredEmployees.length }</p>entries
                 </span>
+
                 <div className="container-button">
                     <button className="prev" 
                         type="button"
@@ -230,5 +237,6 @@ function ReactTable() {
         </div>
     );
 }
+
 export default ReactTable;
 

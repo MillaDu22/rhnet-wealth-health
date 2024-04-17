@@ -1,12 +1,22 @@
 import React, {useRef} from 'react';
 import './TimePicker.css';
 
+/**
+ * Composant React représentant un sélecteur d'heure.
+ * @param {object} props - Les propriétés du composant.
+ * @param {function} props.onChange - La fonction de rappel à appeler lorsqu'une nouvelle heure est sélectionnée.
+ * @param {string} props.value - L'heure actuellement sélectionnée.
+ * @returns {JSX.Element} Le composant TimePicker.
+ */
 function TimePicker({ onChange, value }) {
     const hours = Array.from({ length: 24 }, (_, i) => i);
     const minutes = Array.from({ length: 4 }, (_, i) => i * 15);
     const hourColumnRef = useRef(null);
 
-
+    /**
+     * Gère le défilement vers le haut ou le bas dans la colonne des heures.
+     * @param {string} direction - La direction du défilement ('up' pour vers le haut, 'down' pour vers le bas).
+     */
     const handleScroll = (direction) => {
         const scrollAmount = 100;
         if (hourColumnRef.current) {
@@ -18,6 +28,11 @@ function TimePicker({ onChange, value }) {
         }
     };
 
+    /**
+     * Gère le changement de l'heure sélectionnée.
+     * @param {number} hour - L'heure sélectionnée.
+     * @param {number} minute - La minute sélectionnée.
+     */
     const handleTimeChange = (hour, minute) => {
         onChange(`${hour}:${minute < 10 ? `0${minute}` : minute}`);
     };

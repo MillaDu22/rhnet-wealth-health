@@ -172,7 +172,7 @@ const employeesReducer = (state = initialEmployeesState, action) => {
 
         case IS_FORM_VALID:
             if (action.payload === true) {
-                // Si le formulaire est valide, réinitialisez les erreurs à un état vide
+                // Si le formulaire est valide, réinitialise les erreurs à un état vide //
                 return {
                     ...state,
                     isFormValid: action.payload,

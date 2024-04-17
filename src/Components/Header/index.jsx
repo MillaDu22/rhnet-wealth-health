@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import "./Header.css";
 import logoWH from "../../Assets/images/logo-wealth-health.png";
 
+/**
+ * Composant React représentant l'en-tête de l'application.
+ * @returns {JSX.Element} Le composant Header.
+ */
 function Header () {
     return (
         <header className="header">

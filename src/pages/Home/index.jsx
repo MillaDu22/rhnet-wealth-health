@@ -5,9 +5,12 @@ import Collapse from '../../Components/Collapse/index.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter, setPageSize } from '../../Redux/Actions.js';
 
-
+/**
+ * Composant React représentant la page d'accueil de la liste du personnel Wealth-health.
+ * @returns {JSX.Element} Le composant Home.
+ */
 function Home() {
-    const pageSize = useSelector((state) => state.employees.pageSize);
+    const pageSize = useSelector((state) => state.employees.pageSize); // action pagSize store, selected value collapse //
 
     const dispatch = useDispatch();
     // SearchBar action setFilter //
@@ -23,8 +26,8 @@ function Home() {
         { label: '100', value: 100 },
     ];
 
+    // Dispatche l'action pour mettre à jour la taille de la page dans le store Redux //
     const handlePageSizeChange = (value, event) => {
-        // Dispatche l'action pour mettre à jour la taille de la page dans le store Redux //
         if (event) {
             event.preventDefault();
         }

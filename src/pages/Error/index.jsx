@@ -2,6 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Error.css';
 
+/**
+ * Composant React représentant une page d'erreur 404.
+ * @returns {JSX.Element} Le composant Error.
+ */
 function Error () {
         return (
             <div className="error_wrapper">

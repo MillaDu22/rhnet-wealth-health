@@ -1,16 +1,20 @@
 import React, { useState} from 'react';
 import { departments } from "../../Datas/DataDepartment.js";
 import { states } from "../../Datas/DataStates.js";
-import { Modale } from  "react-modale-by-ldla";
+import { Modale } from  "react-modale-by-ldla"; // Mon package npm //
 import ReactSelect from "../../Components/ReactSelect/index.jsx";
 import ReactCalendar from "../../Components/ReactCalendar/index.jsx";
 import { useSelector, useDispatch } from 'react-redux';
 import { isFormValid, addNewEmployee, setFormErrors } from '../../Redux/Actions';
 import "./FormNewPage.css";
 
+/**
+ * Composant React représentant la page de création d'un nouveau personnel.
+ * @returns {JSX.Element} Le composant FormNewPage.
+ */
 function FormNewPage() {
     const [isOpen, setIsOpen] = useState(false); // State modale par défaut //
-    const formErrors = useSelector((state) => state.employees.errors);
+    const formErrors = useSelector((state) => state.employees.errors); // errors action store //
     const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
@@ -24,14 +28,14 @@ function FormNewPage() {
         zipCode: '',
         department: ''
     });
-
+    // selection date //
     const handleDateOfBirthChange = (newDate) => {
         setFormData(prevState => ({
             ...prevState,
             dateOfBirth: newDate,
         }));
     };
-
+    // selection date //
     const handleStartDateChange = (newDate) => {
         setFormData(prevState => ({
             ...prevState,
@@ -46,15 +50,15 @@ function FormNewPage() {
             [name]: value
         }));
     };
-
+    // selection pays //
     const handleStateChange = (selectedState) => {
         setFormData(prevState => ({ ...prevState, state: selectedState }));
     };
-
+    // selection departement //
     const handleDepartmentChange = (selectedDepartment) => {
         setFormData(prevState => ({ ...prevState, department: selectedDepartment }));
     };
-
+    // Les erreurs formulaire //
     const submitForm = (e) => {
         e.preventDefault();
 
@@ -92,7 +96,7 @@ function FormNewPage() {
             setIsOpen(false);
             return; // Arrête le traitement de la soumission du formulaire //
         }
-
+        // Sinon formulaire valide dispatch actions formvalid, modaleopen, addEmployee, vide champs form //
         dispatch(isFormValid(true));
         setIsOpen(true);
         dispatch(addNewEmployee(formData));
@@ -111,7 +115,7 @@ function FormNewPage() {
 
     return (
         <div className="page-create">
-            <h2 className="title-page">RHNet - Create new employees</h2>
+            <h2 className="title-page">RHNet - Ajout de personnel Wealth-Health </h2>
             <form name="create" noValidate onSubmit={submitForm}>
                 <div className="aside-left">
                     <div className="formData">
