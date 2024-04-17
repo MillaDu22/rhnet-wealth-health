@@ -115,7 +115,7 @@ function FormNewPage() {
 
     return (
         <div className="page-create">
-            <h2 className="title-page">RHNet - Ajout de personnel Wealth-Health </h2>
+            <h2 className="title-page">RHnet - Adding Wealth-Health staff </h2>
             <form name="create" noValidate onSubmit={submitForm}>
                 <div className="aside-left">
                     <div className="formData">

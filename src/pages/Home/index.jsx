@@ -38,7 +38,7 @@ function Home() {
 
     return (
         <main className="main-employees-list">
-            <h2 className="title-main-page">Liste du personnel Wealth-health</h2>
+            <h2 className="title-main-page">RHnet - Wealth-Health staff list</h2>
             <div className="row-entries">
                 <Collapse options={options} 
                     label="Show entries"

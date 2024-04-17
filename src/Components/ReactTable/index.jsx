@@ -212,8 +212,8 @@ function ReactTable() {
             </table>
 
             <div className="row-bottom">
-                <span className="account-employees">Showing
-                    <p className="show-number">{(pageIndex + 1 ) }</p>to
+                <span className="account-employees">Showing page
+                    <p className="show-number">{(pageIndex + 1 ) }</p>/
                     <p className="show-number-to">{Math.ceil(filteredEmployees.length / pageSize)}</p>of 
                     <p className="show-number-of">{ filteredEmployees.length }</p>entries
                 </span>
