@@ -25,47 +25,47 @@ In the project directory, you can run:
 
 Node v21.6.1, 
 
-npm 10.8.2 , 
+npm v10.8.2 , 
 
-@babel/core: ^7.24.4,
+@babel/core: v7.24.4,
 
-@reduxjs/toolkit: ^2.2.1,
+@reduxjs/toolkit: v2.2.1,
 
-@testing-library/jest-dom: ^5.17.0,
+@testing-library/jest-dom: v5.17.0,
 
-@testing-library/react: ^13.4.0,
+@testing-library/react: v13.4.0,
 
-@testing-library/user-event: ^13.5.0,
+@testing-library/user-event: v13.5.0,
 
-babel-loader: ^9.1.3,
+babel-loader: v9.1.3,
 
-react": ^18.2.0,
+react": v18.2.0,
 
-react-calendar: ^4.8.0,
+react-calendar: v4.8.0,
 
-react-dom": ^18.2.0,
+react-dom": v18.2.0,
 
-react-icons: ^5.0.1,
+react-icons: v5.0.1,
 
-react-modale-by-ldla: ^0.1.1,
+react-modale-by-ldla: v0.1.1,
 
-react-redux: ^9.1.0,
+react-redux: v9.1.0,
 
-react-router: ^6.22.3,
+react-router: v6.22.3,
 
-react-router-dom: ^6.22.3,
+react-router-dom: v6.22.3,
 
-react-scripts: ^5.0.1,
+react-scripts: v5.0.1,
 
-react-select: ^5.8.0,
+react-select: v5.8.0,
 
-react-table: ^7.8.0,
+react-table: v7.8.0,
 
-reactstrap: ^9.2.2,
+reactstrap: v9.2.2,
 
-redux: ^5.0.1,
+redux: v5.0.1,
 
-redux-persist: ^6.0.0,
+redux-persist: v6.0.0,
 
 ## Learn More
 
