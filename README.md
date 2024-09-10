@@ -23,17 +23,49 @@ In the project directory, you can run:
 
 ## Technologies
 
-React, 
+Node v21.6.1, 
 
-JavaScript, 
+npm 10.8.2 , 
 
-Css, 
+@babel/core: ^7.24.4,
 
-npm , 
+@reduxjs/toolkit: ^2.2.1,
 
-React-router, 
+@testing-library/jest-dom: ^5.17.0,
 
-Redux
+@testing-library/react: ^13.4.0,
+
+@testing-library/user-event: ^13.5.0,
+
+babel-loader: ^9.1.3,
+
+react": ^18.2.0,
+
+react-calendar: ^4.8.0,
+
+react-dom": ^18.2.0,
+
+react-icons: ^5.0.1,
+
+react-modale-by-ldla: ^0.1.1,
+
+react-redux: ^9.1.0,
+
+react-router: ^6.22.3,
+
+react-router-dom: ^6.22.3,
+
+react-scripts: ^5.0.1,
+
+react-select: ^5.8.0,
+
+react-table: ^7.8.0,
+
+reactstrap: ^9.2.2,
+
+redux: ^5.0.1,
+
+redux-persist: ^6.0.0,
 
 ## Learn More
 
@@ -71,6 +103,6 @@ le repository package npm : https://github.com/MillaDu22/react-modale-by-ldla
 
 le repository  RhNet convertit React : https://github.com/MillaDu22/rhnet-wealth-health
 
-## Link'deployed app
+## Link deployed app
 
 la GhPage: https://milladu22.github.io/rhnet-wealth-health/
