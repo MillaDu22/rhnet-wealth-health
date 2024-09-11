@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { IoCalendarOutline } from 'react-icons/io5';
 import './ReactCalendar.css';
-import TimePicker from '../TimePicker/index.jsx';
+/*import TimePicker from '../TimePicker/index.jsx';*/
 
 /**
  * Composant React représentant un sélecteur de date avec un calendrier.
@@ -15,7 +15,7 @@ import TimePicker from '../TimePicker/index.jsx';
  */
 function ReactCalendar({ uniqueId, label, onChange }) {
     const [date, setDate] = useState(new Date());
-    const [time, setTime] = useState('12:00');
+    //const [time, setTime] = useState('12:00');
     const [isOpen, setIsOpen] = useState(false);
     const calendarRef = useRef();
 
@@ -62,9 +62,9 @@ function ReactCalendar({ uniqueId, label, onChange }) {
      * Met à jour l'heure sélectionnée.
      * @param {string} newTime - La nouvelle heure sélectionnée.
      */
-    const handleChangeTime = (newTime) => {
+    /*const handleChangeTime = (newTime) => {
         setTime(newTime);
-    };
+    };*/
 
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
@@ -89,15 +89,16 @@ function ReactCalendar({ uniqueId, label, onChange }) {
             </div>
             {isOpen && (
                 <div className="calendar-container">
+                    <i className="fa-solid fa-house"></i>
                     <Calendar
                         onChange={handleChangeDate}
                         value={date}
                         className="calendar-control"
                     />
-                    <TimePicker
+                    {/*<TimePicker
                         onChange={handleChangeTime}
                         value={time}
-                    />
+                    />*/}
                 </div>
             )}
             <div id={`error-${uniqueId}`} className="calendar-error"></div>

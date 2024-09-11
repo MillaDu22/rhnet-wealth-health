@@ -1,24 +1,38 @@
 .calendar-container {
     display: flex;
-    flex-direction: row; 
-    align-items:flex-start;
+    flex-direction: column; 
+    justify-content:space-between;
     border:1px solid #6c757d95;
-    padding:5px;
-    overflow-x: auto;
+    /*padding:5px;*/
+    width:78%;
+    padding:0px 0px 15px 0px;
+    /*overflow-x: auto;*/
+}
+
+.fa-house {
+    width:10%;
+    text-align: left;
+    position:relative;
+    color:darkgray;
+    font-size: 16px;
+    left: 78px;
+    top:28px;
 }
 
 .calendar-control {
     flex-grow: 1; 
     border:none;
+    margin: 0 auto;
 }
 
 .react-calendar__navigation{
     margin-bottom: 0px;
 }
 
+
 .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
     font-family: 'Roboto';
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -33,11 +47,13 @@
 .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
     font-size: 26px;
     font-weight: 500;
+    color:darkgrey;
 }
 
 .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
     font-size: 26px;
     font-weight: 500;
+    color:darkgrey;
 }
 
 
@@ -67,6 +83,10 @@
     justify-content: center;
     overflow-y: hidden;
     background: transparent;
+    width:100%;
+    height:100%;
+    margin-left:auto;
+    margin-right: auto;
 }
 
 .react-calendar__year-view {
@@ -87,42 +107,89 @@
     flex-direction: column;
     justify-content: flex-start;
     height: 275px;
-    width: 40%;
+    width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
 
+}
+
+
+.react-calendar__tile:hover  {
+    border:1px solid lightgrey;
+    text-decoration: underline;
+}
+
+
+.react-calendar__decade-view__years button {
+    border:1px solid lightgray;
 }
 
 .react-calendar__year-view__months {
     display:flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 85%;
+    height: 100%;
     width: 100%;
 }
 
 .react-calendar__tile.react-calendar__year-view__months__month {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: 700;
-    padding:0;
-    margin-top: 0px;
-    text-align: right;
-    padding-right: 30px;
-    width: 100%;
+    margin: 0px;
+    text-align: center;
+    padding: 20px;
+    width: 30%;
     max-height:30px;
+    border:1px solid lightgray
+}
+.react-calendar__tile.react-calendar__year-view__months__month:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1006px) {
+    .calendar-container {
+        width:80%;
+        padding:0 0px 20px 0px;
+    }
+
+    .fa-house {
+        left:40px;
+        top:28px;
+    }
+
+
+    .react-calendar.calendar-control {
+        width: 100%;
+    }
+    .react-calendar__month-view {
+        width:100%;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .calendar-container {
         width:100%;
-        overflow-x: auto;
-        padding:0;
+        padding:0 0 20px;
+    }
+
+    .calendar-control {
+        width: 94%;
+    }
+
+    .fa-house {
+        width:30%;
+        left:60px;
+        top:28px;
     }
 }
 

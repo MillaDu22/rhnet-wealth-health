@@ -119,7 +119,7 @@ function FormNewPage() {
             <form name="create" noValidate onSubmit={submitForm}>
                 <div className="aside-left">
                     <div className="formData">
-                        <label className="label-create" htmlFor="first">Prénom</label>
+                        <label className="label-create" htmlFor="first">FirstName</label>
                         <input
                             className="text-control"
                             tabIndex="0"
@@ -137,7 +137,7 @@ function FormNewPage() {
                     </div>
 
                     <div className="formData">
-                        <label className="label-create" htmlFor="last">Nom</label>
+                        <label className="label-create" htmlFor="last">LastName</label>
                         <input
                             className="text-control"
                             type="text"
