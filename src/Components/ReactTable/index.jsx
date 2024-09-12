@@ -21,7 +21,6 @@ function ReactTable() {
     const [sortBy, setSortBy] = useState([]); // state local input columns //
 
     useEffect(() => {
-        // Assure-toi que la pageIndex est réinitialisée lorsque pageSize change
         setPageIndex(0);
     }, [pageSize]);
 
