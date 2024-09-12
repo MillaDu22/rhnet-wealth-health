@@ -13,7 +13,7 @@ import { BsArrowUp, BsArrowDown } from 'react-icons/bs';
  * @param {boolean} props.isSortedDesc - Indique si le champ d'entrée est trié par ordre décroissant.
  * @returns {JSX.Element} Le composant FilterInput.
  */
-const FilterInput = ({ label, id, onChange, isSorted, isSortedDesc  }) => {
+const FilterInput = ({ label, id, onChange, isSorted, isSortedDesc }) => {
     return (
         <div className="filter-input">
             <span className="label-filter-input">{label}</span>

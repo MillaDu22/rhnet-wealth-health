@@ -33,9 +33,8 @@ function Home() {
         }
         dispatch(setPageSize(Number(value)));
         // Met à jour l'état du nombre d'entrées sélectionnées //
-        window.location.reload(false);
     };
-
+    
     return (
         <main className="main-employees-list">
             <h2 className="title-main-page">RHnet - Wealth-Health staff list</h2>
@@ -52,7 +51,7 @@ function Home() {
                 </div>
             </div>
             <div id="react-table">
-                <ReactTable /> 
+                <ReactTable key={pageSize} /> 
             </div>
         </main>
     );

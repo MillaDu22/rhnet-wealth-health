@@ -58,6 +58,7 @@ function FormNewPage() {
     const handleDepartmentChange = (selectedDepartment) => {
         setFormData(prevState => ({ ...prevState, department: selectedDepartment }));
     };
+
     // Les erreurs formulaire //
     const submitForm = (e) => {
         e.preventDefault();
@@ -84,12 +85,11 @@ function FormNewPage() {
         }
         if (formData.zipCode.trim() === '') {
             errors.zipCode = "Le code postal est requis.";
-        } 
+        }   
         if (Object.keys(errors).length > 0) {
             dispatch(setFormErrors(errors));
             return;
         } 
-
         // Si des erreurs sont présentes, dispatch l'action setFormErrors //
         if (Object.keys(errors).length > 0) {
             dispatch(setFormErrors(errors));

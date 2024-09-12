@@ -21,6 +21,11 @@ function ReactTable() {
     const [sortBy, setSortBy] = useState([]); // state local input columns //
 
     useEffect(() => {
+        // Assure-toi que la pageIndex est réinitialisée lorsque pageSize change
+        setPageIndex(0);
+    }, [pageSize]);
+
+    useEffect(() => {
         // Déclenche l'action setFilter avec la nouvelle valeur du filtre searchBar //
         dispatch(setFilter(filter));
         // Filtre les employés en fonction du des lettres entrées dans la searchBar //
@@ -74,7 +79,6 @@ function ReactTable() {
     const handleSortChange = useCallback((columnId, direction) => {
         setSortBy([columnId, direction]);
     }, []);
-
     const columns = React.useMemo(() => [
         {
             Header: <FilterInput label="FirstName" id="tri-firstname" onChange={handleSortChange} />,
@@ -136,7 +140,7 @@ function ReactTable() {
     } = useTable (
         { columns, 
             initialState: { pageIndex, pageSize },
-            data: filteredEmployees, 
+            data: filteredEmployees,
             updateMyData: ({ pageIndex }) => {
                 setPageIndex(pageIndex);
                 setPageSize(pageSize);
@@ -146,6 +150,7 @@ function ReactTable() {
         useSortBy, 
         usePagination
     );
+
     // Met à jour la page actuelle au counter après avoir cliqué sur Prev //
     const handlePrevPage = () => {
         previousPage();
@@ -161,33 +166,32 @@ function ReactTable() {
         <div className="container-table">
             <table className="table table-hover" {...getTableProps()}>
                 <thead>
-                {headerGroups.map(headerGroup => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map(column => (
-                        <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                            <div className="column-header">
-                                <span>{column.render('Header')}</span>
-                                {column.canSort && (
-                                    <div className="sort-icons">
-                                    <BsArrowUp className={`arrow-icon ${column.isSorted && !column.isSortedDesc ? 'visible' : ''}`} />
-                                    <BsArrowDown className={`arrow-icon ${column.isSorted && column.isSortedDesc ? 'visible' : ''}`} />
-                                </div>
-                                )}
-                            </div>
-                        </th>
+                    {headerGroups.map((headerGroup, index) => (
+                        <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id || index}>
+                            {headerGroup.headers.map(column => (
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())} key={column.id}>
+                                    <div className="column-header">
+                                        <span>{column.render('Header')}</span>
+                                        {column.canSort && (
+                                            <div className="sort-icons">
+                                                <BsArrowUp className={`arrow-icon ${column.isSorted && !column.isSortedDesc ? 'visible' : ''}`} />
+                                                <BsArrowDown className={`arrow-icon ${column.isSorted && column.isSortedDesc ? 'visible' : ''}`} />
+                                            </div>
+                                        )}
+                                    </div>
+                                </th>
+                            ))}
+                        </tr>
                     ))}
-                </tr>
-            ))}
-            </thead>
-
+                </thead>
                 <tbody {...getTableBodyProps()}>
-                {page.map(row => {
+                {page.map((row, index) => {
                     prepareRow(row);
                     return (
-                    <tr {...row.getRowProps()} className="employee-row">
+                    <tr {...row.getRowProps()} className="employee-row" key={row.id || index}>
                         {row.cells.map(cell => {
                         return (
-                            <td {...cell.getCellProps()}>
+                            <td {...cell.getCellProps()} key={cell.column.id}>
                             {cell.render('Cell')}
                             </td>
                         );
@@ -195,8 +199,8 @@ function ReactTable() {
                     </tr>
                     );
                 })}
-                {newEmployee && (
-                    <tr className="employee-row">
+                {newEmployee && ( 
+                    <tr className="employee-row" key={newEmployee.employee.id || 'new-employee'}>
                     <td className="new">{newEmployee?.employee?.FirstName}</td>
                     <td>{newEmployee?.employee?.LastName}</td>
                     <td>{newEmployee?.employee?.StartDate}</td>
